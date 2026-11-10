@@ -413,7 +413,6 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
             <div><i class="wc-dot wc-ai-dot"></i><span>是否允许未来日期</span><small>AI 自主选择</small></div>
             <div><i class="wc-dot wc-ai-dot"></i><span>分类使用自由文本</span><small>AI 自主选择</small></div>
           </div>
-          <a class="wc-map-link" href="#demo">在报告里看清这些选择 <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
@@ -431,7 +430,7 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
     <section class="wc-demo-section" id="demo" aria-labelledby="demo-title">
       <div class="wc-wrap">
         <div class="wc-demo-heading"><p class="wc-kicker">03 / 体验示例</p><h2 class="wc-section-title" id="demo-title">让 AI 给记账工具增加日期和分类，<br><span>它还会自己决定什么？</span></h2><p>看一个实际开发案例，分清哪些是用户的要求，哪些是 AI 补充的规则。</p></div>
-        <div class="wc-demo-intro"><span class="wc-real-label"><i class="wc-dot wc-user-dot"></i> 真实任务报告</span><button class="wc-demo-shortcut" type="button" data-action="show-ai">先看看 AI 补充的 2 项 <span aria-hidden="true">→</span></button></div>
+        <div class="wc-demo-intro"><span class="wc-real-label"><i class="wc-dot wc-user-dot"></i> 真实任务报告</span></div>
         <div class="wc-app" id="review-demo">
           <div class="wc-app-titlebar"><span class="wc-preview-brand"><span class="wc-mini-mark">w?</span> WhoChose <span class="wc-app-divider">/</span><span class="wc-app-subtitle">本次实现审阅</span></span><span class="wc-readonly">◉ 只读示例</span></div>
           <div class="wc-app-body">
@@ -678,9 +677,6 @@ window.WHOCHOSE_DEMO = {
       focusSelector = '#toggle-' + button.dataset.id;
     } else if (action === 'view') {
       state.view = button.dataset.view;
-    } else if (action === 'show-ai') {
-      state.view = 'decisions'; state.filter = 'AI_SUPPLEMENTED';
-      state.expanded = data.choices.find(choice => choice.source === 'AI_SUPPLEMENTED')?.id ?? null;
     } else return;
     render();
     if (focusSelector) document.querySelector(focusSelector)?.focus({preventScroll:true});
