@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="刘天贇的个人项目与实践：探索 AI 协作与工具设计。">
+<meta name="theme-color" content="#6e07f3"><title>刘天贇｜个人项目与实践</title>
+<style>body{margin:0}[data-portfolio-view][hidden]{display:none!important}
+:root{ --purple:#6e07f3; --ink:#141c3a; --muted:#7d8296; --line:#e8eaf1; --soft:#f6f5fb; }
+.portfolio-home *{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:28px; }
+.portfolio-home{ margin:0; background:#fff; color:var(--ink); font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif; -webkit-font-smoothing:antialiased; }
+.portfolio-home a{ color:inherit; text-decoration:none; }
+.portfolio-home button{ font:inherit; }
+.portfolio-home a:focus-visible{ outline:3px solid #b388ff; outline-offset:6px; }
+.portfolio-home .shell{ width:min(1080px,calc(100% - 64px)); margin-inline:auto; }
+.portfolio-home .header{ height:112px; display:flex; align-items:center; justify-content:space-between; }
+.portfolio-home .identity{ display:flex; align-items:center; gap:13px; font-size:14px; font-weight:600; }
+.portfolio-home .mark{ width:37px; height:37px; border:2px solid var(--purple); border-radius:12px; display:grid; place-items:center; color:var(--purple); }
+.portfolio-home .mark svg{ width:22px; height:22px; }
+.portfolio-home nav{ display:flex; align-items:center; gap:32px; font-size:14px; }
+.portfolio-home nav a:not(.pill):hover{ color:var(--purple); }
+.portfolio-home .pill{ display:inline-flex; align-items:center; justify-content:center; gap:12px; padding:12px 24px; border:1.5px solid var(--purple); color:var(--purple); border-radius:999px; font-size:14px; font-weight:500; transition:background .18s,color .18s,transform .18s; }
+.portfolio-home a.pill:hover{ background:var(--purple); color:#fff; transform:translateY(-2px); }
+.portfolio-home .pill.filled{ background:var(--purple); color:#fff; }
+.portfolio-home a.pill.filled:hover{ background:#5804c5; }
+.portfolio-home .hero{ text-align:center; padding:44px 0 62px; }
+.portfolio-home .eyebrow{ font-size:11px; letter-spacing:3px; color:var(--muted); font-weight:600; }
+.portfolio-home h1{ margin:25px 0 17px; font-size:clamp(42px,5vw,64px); line-height:1.2; font-weight:720; letter-spacing:-2px; }
+.portfolio-home .hero-sub{ margin:0; font-size:19px; line-height:1.8; color:#9296a5; font-weight:400; }
+.portfolio-home .portrait{ width:96px; height:96px; margin:32px auto 0; border-radius:50%; background:#f3ebff; display:grid; place-items:center; position:relative; }
+.portfolio-home .portrait-initials{ color:#8d51d1; font-size:25px; font-weight:600; letter-spacing:3px; padding-left:3px; }
+.portfolio-home .portrait svg{ width:76px; height:76px; color:#b789ef; }
+.portfolio-home .portrait::after{ content:""; width:13px; height:13px; background:#d7c0f6; border:4px solid #fff; border-radius:50%; position:absolute; right:0; bottom:9px; box-sizing:content-box; }
+.portfolio-home .micro{ color:#969aab; font-size:11px; letter-spacing:1px; }
+.portfolio-home .hero-actions{ display:flex; justify-content:center; align-items:center; gap:14px; margin-top:34px; }
+.portfolio-home .text-link{ padding:13px 20px; font-size:14px; color:#60667b; }
+.portfolio-home .text-link:hover{ color:var(--purple); }
+.portfolio-home .about-band{ background:var(--purple); color:#fff; padding:50px 24px 125px; text-align:center; }
+.portfolio-home h2{ font-size:27px; line-height:1.4; font-weight:650; margin:0; letter-spacing:-.5px; }
+.portfolio-home .band-note{ color:#eee2ff; margin:20px auto 0; max-width:650px; font-size:16px; line-height:2; text-wrap:pretty; }
+.portfolio-home .lines{ display:flex; flex-direction:column; gap:11px; }
+.portfolio-home .lines span{ display:block; height:8px; border-radius:8px; background:#e9eaf1; }
+.portfolio-home .about-band .lines{ width:min(470px,85%); margin:28px auto 0; align-items:center; gap:12px; }
+.portfolio-home .about-band .lines span{ height:7px; background:rgba(255,255,255,.24); }
+.portfolio-home .projects{ position:relative; margin-top:-88px; }
+.portfolio-home .project-card{ border:1px solid var(--line); border-radius:20px; background:white; overflow:hidden; box-shadow:0 12px 38px rgba(20,28,58,.055); }
+.portfolio-home .project-top{ display:flex; justify-content:space-between; align-items:center; padding:25px 32px 21px; }
+.portfolio-home .project-kicker{ font-size:11px; letter-spacing:2px; font-weight:600; color:var(--purple); }
+.portfolio-home .status{ font-size:11px; color:#9296a5; border:1px solid var(--line); border-radius:20px; padding:6px 12px; }
+.portfolio-home .project-stage{ padding:18px 72px 0; background:linear-gradient(180deg,#fff 0%,#f7f4fd 100%); }
+.portfolio-home .browser{ background:#fff; border:1px solid #e5dff1; border-radius:12px 12px 0 0; box-shadow:0 0 35px rgba(65,27,115,.04); overflow:hidden; }
+.portfolio-home .browser-top{ height:35px; display:flex; align-items:center; gap:5px; padding:0 15px; border-bottom:1px solid #eeebf4; }
+.portfolio-home .browser-top i{ width:6px; height:6px; background:#ded9e9; border-radius:50%; }
+.portfolio-home .address{ width:28%; height:6px; margin:auto; background:#f0edf6; border-radius:5px; transform:translateX(-12px); }
+.portfolio-home .media-placeholder{ height:280px; margin:21px; border:1px dashed #d9d0e9; background:#fcfbfe; border-radius:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; color:#a79ab9; }
+.portfolio-home .media-placeholder svg{ width:36px; height:36px; color:#b7a3d0; }
+.portfolio-home .media-placeholder span{ font-size:13px; letter-spacing:1px; }
+.portfolio-home .project-bottom{ padding:34px 40px 36px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:40px; border-top:1px solid #eeebf4; }
+.portfolio-home h3{ font-size:25px; font-weight:620; margin:0 0 19px; color:#71768b; }
+.portfolio-home .project-bottom .lines{ max-width:420px; gap:10px; }
+.portfolio-home .tags{ display:flex; gap:7px; margin-top:22px; }
+.portfolio-home .tag{ width:56px; height:20px; border-radius:5px; background:#f2eef9; }
+.portfolio-home .inactive-actions{ display:flex; flex-direction:column; align-items:center; gap:13px; }
+.portfolio-home button:disabled{ cursor:default; }
+.portfolio-home .inactive-actions .pill{ border-color:#e4d8f5; color:#b79bdc; background:#faf7fe; }
+.portfolio-home .inactive-caption{ font-size:11px; color:#a6a9b6; }
+.portfolio-home .contact{ padding:88px 24px 64px; text-align:center; }
+.portfolio-home .contact h2{ font-size:25px; }
+.portfolio-home .contact-note{ margin:18px 0 26px; color:var(--muted); font-size:14px; line-height:1.8; }
+.portfolio-home .contact .lines{ max-width:280px; align-items:center; margin:24px auto 28px; }
+.portfolio-home .contact-links{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+.portfolio-home .contact-item{ display:flex; align-items:center; gap:10px; color:#505b72; font-size:14px; border:1px solid var(--line); border-radius:999px; padding:13px 22px; transition:color .2s,border-color .2s; overflow-wrap:anywhere; }
+.portfolio-home a.contact-item:hover{ color:var(--purple); border-color:#d3b8f4; }
+.portfolio-home .contact-item svg{ width:15px; height:15px; }
+.portfolio-home footer{ border-top:1px solid #f0eff5; display:flex; justify-content:space-between; align-items:center; padding:25px 0; font-size:11px; color:#a2a5b3; }
+.portfolio-home .footer-mark{ display:flex; align-items:center; gap:8px; }
+.portfolio-home .dot{ width:5px; height:5px; border-radius:50%; background:var(--purple); }
+@media (max-width:680px){.portfolio-home .shell{ width:calc(100% - 36px); }
+.portfolio-home .header{ height:86px; }
+.portfolio-home .identity{ gap:9px; font-size:12px; }
+.portfolio-home .mark{ width:31px; height:31px; border-radius:10px; }
+.portfolio-home nav{ gap:18px; font-size:12px; }
+.portfolio-home nav .pill{ padding:9px 15px; font-size:12px; }
+.portfolio-home nav .about-nav{ display:none; }
+.portfolio-home .hero{ padding:42px 0 65px; }
+.portfolio-home h1{ letter-spacing:-1px; }
+.portfolio-home .hero-sub{ font-size:15px; }
+.portfolio-home .portrait{ width:84px; height:84px; margin-top:27px; }
+.portfolio-home .portrait-initials{ font-size:22px; }
+.portfolio-home .portrait svg{ width:65px; height:65px; }
+.portfolio-home .about-band{ padding:42px 22px 104px; }
+.portfolio-home .band-note{ font-size:14px; line-height:2; margin-top:17px; }
+.portfolio-home h2{ font-size:23px; }
+.portfolio-home .projects{ margin-top:-64px; }
+.portfolio-home .project-card{ border-radius:15px; }
+.portfolio-home .project-top{ padding:20px; }
+.portfolio-home .project-stage{ padding:12px 18px 0; }
+.portfolio-home .media-placeholder{ height:190px; margin:13px; }
+.portfolio-home .media-placeholder span{ font-size:11px; }
+.portfolio-home .project-bottom{ padding:26px 24px; grid-template-columns:1fr; gap:26px; }
+.portfolio-home h3{ font-size:22px; }
+.portfolio-home .inactive-actions{ align-items:flex-start; }
+.portfolio-home .inactive-caption{ padding-left:8px; }
+.portfolio-home .contact{ padding:64px 18px 48px; }
+.portfolio-home .contact-item{ padding:10px 13px; }
+.portfolio-home footer{ font-size:10px; }
+
+    }
+@media (prefers-reduced-motion:reduce){html{ scroll-behavior:auto; }
+.portfolio-home .pill{ transition:none; }
+ }
+
+  
+:root{--wc-purple:#6e07f3;--wc-ink:#141c3a;--wc-text:#646b80;--wc-line:#e9e8f1;--wc-lilac:#f7f4fc;--wc-user:#27835e;--wc-ai:#986020;--wc-radius:22px}
+.wc-page{margin:0;background:#fff;color:var(--wc-ink);font-family:Inter,"Segoe UI","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+.wc-page *,.wc-feature *{box-sizing:border-box}
+.wc-page a,.wc-feature a{color:inherit;text-decoration:none}
+.wc-page button{font:inherit}
+.wc-page button,.wc-page summary{-webkit-tap-highlight-color:transparent}
+.wc-page a:focus-visible,.wc-page button:focus-visible,.wc-page summary:focus-visible,.wc-feature a:focus-visible{outline:3px solid #b48bed;outline-offset:5px}
+.wc-page h1,.wc-page h2,.wc-page h3,.wc-page p{margin-top:0}
+.wc-page h1,.wc-page h2,.wc-page h3{text-wrap:balance}
+.wc-page{scroll-behavior:smooth}
+.wc-page [hidden]{display:none!important}
+.wc-page [id]{scroll-margin-top:30px}
+.wc-wrap{width:min(1120px,calc(100% - 80px));margin-inline:auto}
+.wc-nav{display:flex;align-items:center;justify-content:space-between;height:100px;gap:24px}
+.wc-brand{display:flex;align-items:center;gap:12px;font-size:16px;font-weight:700;line-height:1.2}
+.wc-logo{display:inline-flex;align-items:center;justify-content:center;width:43px;height:43px;border:1.7px solid var(--wc-purple);border-radius:14px;color:var(--wc-purple);font-weight:750;font-size:25px;letter-spacing:-3px;font-family:"Segoe UI",sans-serif;flex-shrink:0}
+.wc-logo>span{font-size:18px;margin:0 3px 0 2px;transform:translateY(-3px)}
+.wc-brand-caption{display:block;margin-top:6px;font-size:10px;letter-spacing:1px;font-weight:400;color:#9094a3}
+.wc-nav nav{display:flex;align-items:center;gap:29px;font-size:13px;color:#686e81}
+.wc-nav nav a:hover,.wc-link:hover{color:var(--wc-purple)}
+.wc-nav .wc-nav-demo{border:1px solid #dfcdf7;border-radius:999px;padding:10px 18px;color:var(--wc-purple)}
+.wc-skip{position:fixed;left:20px;top:14px;background:var(--wc-ink);color:white!important;border-radius:8px;z-index:10;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+.wc-skip:focus{clip-path:none;width:auto;height:auto;padding:12px 20px}
+.wc-kicker{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:650;letter-spacing:1.8px;color:#737f91;margin-bottom:24px}
+.wc-tiny-line{height:1px;width:27px;background:currentColor}
+.wc-case-hero{display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:50px;padding-top:74px;padding-bottom:112px}
+.wc-hero-copy h1{font-size:clamp(34px,3.7vw,49px);font-weight:730;letter-spacing:-1.9px;line-height:1.45;margin-bottom:22px}
+.wc-hero-copy h1>span{color:var(--wc-purple)}
+.wc-lead{max-width:440px;color:var(--wc-text);font-size:15px;line-height:1.95;margin-bottom:30px}
+.wc-actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.wc-btn{display:inline-flex;justify-content:center;align-items:center;gap:20px;padding:13px 24px;border-radius:999px;font-size:13px;font-weight:550;transition:transform .2s,background .2s}
+.wc-page .wc-btn-primary,.wc-feature .wc-btn-primary{background:var(--wc-purple);color:white}
+.wc-btn-primary:hover{background:#5806c2!important;transform:translateY(-2px)}
+.wc-link{font-size:13px;display:inline-flex;gap:18px;align-items:center}
+.wc-meta-tags{display:flex;gap:14px;margin-top:32px;color:#8b8fa0;font-size:11px}
+.wc-meta-tags span+span:before{content:"/";color:#d5d4df;margin-right:14px}
+.wc-hero-art{position:relative;padding:30px 4px 20px 10px;isolation:isolate}
+.wc-hero-art:before{content:"";position:absolute;inset:-15px -35px;background:radial-gradient(ellipse,rgba(110,7,243,.10),rgba(110,7,243,0) 68%);z-index:-2}
+.wc-orbit{position:absolute;border:1px solid #eee6fb;border-radius:50%;z-index:-1}
+.wc-orbit-one{width:360px;height:360px;top:-10px;right:6px}
+.wc-orbit-two{width:440px;height:440px;top:-48px;right:-35px}
+.wc-preview{background:white;border:1px solid #e8e2f1;border-radius:17px;box-shadow:0 20px 65px rgba(58,24,109,.09);transform:rotate(-2deg);overflow:hidden}
+.wc-preview-top{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid #eeecf4;gap:10px}
+.wc-preview-brand{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:650;white-space:nowrap}
+.wc-mini-mark{width:23px;height:23px;display:inline-grid;place-items:center;background:#f0e7ff;color:var(--wc-purple);border-radius:7px;font-size:12px;font-weight:750;letter-spacing:-1px}
+.wc-live-dot{display:flex;align-items:center;gap:5px;font-size:9px;color:#8c849b;white-space:nowrap}
+.wc-live-dot:before{content:"";width:4px;height:4px;border-radius:50%;background:#9d7ec6}
+.wc-preview-body{padding:27px 24px 20px}
+.wc-preview-label{font-size:9px;color:#9893a3;margin-bottom:7px;letter-spacing:1px}
+.wc-preview-body h2{font-size:20px;font-weight:650;margin:0 0 18px;letter-spacing:-.5px}
+.wc-preview-stats{display:flex;gap:20px;font-size:10px;color:#8e899a;margin-bottom:22px}
+.wc-preview-stats b{font-weight:650;font-size:17px;color:var(--wc-ink);margin-right:4px}
+.wc-mini-choice{display:flex;gap:11px;align-items:center;padding:15px 12px;border:1px solid #e8e9ef;border-radius:10px;background:#fff}
+.wc-mini-choice+ .wc-mini-choice{margin-top:10px}
+.wc-mini-choice>div{flex:1;min-width:0}
+.wc-mini-choice strong{display:block;font-size:12px;font-weight:550;line-height:1.5}
+.wc-mini-choice small{display:block;font-size:9px;color:var(--wc-user);margin-top:4px}
+.wc-mini-choice>span:last-child{font-size:13px;color:#a8a5b1}
+.wc-mini-choice-ai{background:#fffdf9;border-color:#f0e5d7}
+.wc-mini-choice-ai small{color:var(--wc-ai)}
+.wc-source-icon{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;flex-shrink:0;font-size:12px;font-weight:600}
+.wc-user{background:#edf7f1;color:var(--wc-user)}
+.wc-ai{background:#fcf1e3;color:var(--wc-ai)}
+.wc-preview-annotation{display:flex;gap:7px;align-items:center;margin-top:18px;font-size:10px;color:#a19aaa}
+.wc-preview-annotation>span{color:#b39acd;font-size:17px}
+.wc-float-label{display:flex;align-items:center;gap:8px;position:absolute;z-index:1;background:#fff;border:1px solid #e9e4ef;border-radius:999px;padding:9px 15px;font-size:11px;box-shadow:0 6px 22px rgba(33,22,52,.05)}
+.wc-float-top{top:0;right:2px;transform:rotate(5deg)}
+.wc-float-bottom{bottom:3px;left:-17px;transform:rotate(3deg)}
+.wc-dot{display:inline-block;width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.wc-user-dot{background:var(--wc-user)}
+.wc-ai-dot{background:#c18a43}
+.wc-unknown-dot{background:#9ba0ae}
+.wc-why-section{background:var(--wc-lilac);padding:90px 0}
+.wc-why-grid{display:grid;grid-template-columns:1fr .95fr;gap:110px;align-items:center}
+.wc-section-title{font-size:clamp(27px,3vw,37px);line-height:1.55;font-weight:680;letter-spacing:-1px;margin:0 0 24px}
+.wc-prose{font-size:14px;color:var(--wc-text);line-height:2}
+.wc-prose p{margin-bottom:16px}
+.wc-prose .wc-purpose{margin-top:25px;color:var(--wc-purple);font-weight:550}
+.wc-choice-map{padding:20px 0}
+.wc-map-request{position:relative;padding:25px 28px;background:white;border-radius:15px;border:1px solid #e7dff2;overflow:hidden;box-shadow:0 7px 22px rgba(63,35,102,.025)}
+.wc-small-label{font-size:10px;color:#9394a3;letter-spacing:1px;font-weight:550}
+.wc-map-request p{font-size:19px;line-height:1.8;margin:12px 0 0;color:#3b3150}
+.wc-map-quote-mark{position:absolute;font-family:Georgia,serif;font-size:130px;right:16px;top:-13px;color:#f1ebf8;line-height:1;pointer-events:none}
+.wc-map-connector{display:flex;align-items:center;gap:12px;margin-left:25px;font-size:10px;color:#a69ab6;height:51px}
+.wc-map-connector>span:first-child{height:51px;width:1px;background:#d8caec}
+.wc-map-choices{display:grid;gap:10px}
+.wc-map-choices>div{display:flex;align-items:center;gap:10px;padding:15px 18px;border:1px solid #e7e1ef;border-radius:10px;background:#fff;font-size:13px}
+.wc-map-choices small{font-size:10px;color:#9691a0;margin-left:auto;white-space:nowrap}
+.wc-map-link{display:flex;justify-content:flex-end;gap:15px;margin-top:22px;color:var(--wc-purple)!important;font-size:11px}
+.wc-how-section{padding-top:95px;padding-bottom:87px}
+.wc-section-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
+.wc-section-heading .wc-section-title{margin-bottom:0}
+.wc-section-aside{font-size:13px;line-height:1.9;color:#9294a3;margin-bottom:5px}
+.wc-process{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:47px}
+.wc-step-heading{display:flex;align-items:center;gap:15px;margin-bottom:23px}
+.wc-step-number{font-size:11px;color:var(--wc-purple);border:1px solid #e4d7f6;border-radius:50%;height:32px;width:32px;display:grid;place-items:center;flex-shrink:0}
+.wc-step-line{height:1px;background:#eeebf4;flex:1}
+.wc-step-end{color:#cbb3e9;font-size:21px;margin-left:auto}
+.wc-process h3{font-size:18px;font-weight:600;margin-bottom:13px}
+.wc-process p{font-size:13px;line-height:1.95;color:var(--wc-text);margin-bottom:19px}
+.wc-step-caption{font-size:10px;color:#a09baa;letter-spacing:.5px}
+.wc-technical{border-top:1px solid var(--wc-line);border-bottom:1px solid var(--wc-line);margin-top:43px}
+.wc-technical summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:19px 0;list-style:none;cursor:pointer;color:#858294;font-size:12px}
+.wc-technical summary::-webkit-details-marker,.wc-request summary::-webkit-details-marker,.wc-ordinary-item summary::-webkit-details-marker{display:none}
+.wc-summary-plus{color:var(--wc-purple);font-size:18px;transition:transform .2s}
+.wc-technical[open] .wc-summary-plus{transform:rotate(45deg)}
+.wc-technical-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:25px;padding:5px 0 24px}
+.wc-technical-grid b{font-size:12px;color:#514663;font-weight:550}
+.wc-technical-grid p{font-size:12px;color:#8c8795;line-height:1.8;margin:9px 0 0}
+.wc-demo-section{background:#f7f6fa;padding:82px 0 52px}
+.wc-demo-heading{text-align:center;max-width:850px;margin-inline:auto}
+.wc-demo-heading .wc-kicker{justify-content:center}
+.wc-demo-heading .wc-section-title{font-size:clamp(25px,2.8vw,35px);margin-bottom:17px}
+.wc-demo-heading .wc-section-title span{color:var(--wc-purple)}
+.wc-demo-heading>p:last-child{font-size:13px;color:var(--wc-text);line-height:1.9}
+.wc-demo-intro{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:43px;margin-bottom:13px}
+.wc-real-label{display:flex;align-items:center;gap:7px;font-size:10px;color:#838593}
+.wc-demo-shortcut{border:0;color:var(--wc-purple);font-size:11px!important;background:none;padding:9px 0;cursor:pointer;display:flex;align-items:center;gap:13px}
+.wc-app{border:1px solid #e0dce9;border-radius:17px;background:#fff;overflow:hidden;box-shadow:0 20px 65px rgba(38,23,66,.055)}
+.wc-app-titlebar{display:flex;align-items:center;justify-content:space-between;padding:18px 25px;border-bottom:1px solid #ece9f2;gap:10px}
+.wc-app-titlebar .wc-preview-brand{font-size:13px}
+.wc-app-divider{color:#cfccd8;font-weight:400;margin:0 4px}
+.wc-app-subtitle{font-size:11px;color:#898395;font-weight:400}
+.wc-readonly{font-size:10px;color:#9a94a2;border:1px solid #eeeaf3;border-radius:6px;padding:4px 8px;white-space:nowrap}
+.wc-app-body{display:grid;grid-template-columns:190px minmax(0,1fr);min-height:540px}
+.wc-app-sidebar{padding:30px 18px;background:#fdfcfe;border-right:1px solid #eeebf4}
+.wc-app-feature{font-size:13px;font-weight:550;margin-top:12px;margin-bottom:23px}
+.wc-app-views{display:grid;gap:7px}
+.wc-view-button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;border:0;border-radius:8px;padding:11px 10px;font-size:11px!important;background:transparent;color:#8d859a;cursor:pointer;text-align:left}
+.wc-view-button>span{display:flex;align-items:center;gap:9px}
+.wc-view-button b{font-size:10px;font-weight:400;opacity:.6}
+.wc-view-button.is-active{background:#f1eafa;color:#6320b2}
+.wc-view-button:hover{background:#f5f0fb}
+.wc-app-legend{display:grid;gap:13px;margin-top:44px;padding:21px 5px 0;border-top:1px solid #eeebf4}
+.wc-app-legend>span{font-size:10px;color:#9b95a4;display:flex;align-items:center;gap:8px}
+.wc-app-main{padding:24px 28px 20px;min-width:0}
+.wc-request{border:1px solid #eee8f5;border-radius:8px;background:#fbf9fe;margin-bottom:23px}
+.wc-request summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;color:#8d7d9f;font-size:11px;padding:12px 15px}
+.wc-request summary>span{font-size:15px;transition:transform .2s}
+.wc-request[open] summary>span{transform:rotate(180deg)}
+.wc-request p{padding:0 15px 13px;color:#7e728f;font-size:12px;line-height:1.9;margin:0}
+.wc-app-content-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px;gap:15px}
+.wc-app-content-heading h3{font-size:19px;font-weight:600;margin:0}
+.wc-app-content-heading>span{font-size:10px;color:#a09ba8}
+.wc-filters{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-bottom:19px}
+.wc-filter{border:1px solid transparent;border-radius:7px;color:#99909f;background:transparent;padding:7px 11px;display:flex;align-items:center;gap:6px;font-size:11px!important;cursor:pointer}
+.wc-filter.is-active{border-color:#e5d8f7;background:#f7f1fe;color:#692bad}
+.wc-filter:hover{background:#f9f7fc}
+.wc-filter-count{font-size:9px;opacity:.6;font-variant-numeric:tabular-nums}
+.wc-decisions{display:grid;gap:10px}
+.wc-decision{border:1px solid #eae7ef;border-radius:10px;overflow:hidden;background:white;transition:border-color .2s,box-shadow .2s}
+.wc-decision.is-open{border-color:#cfbae9;box-shadow:0 3px 14px rgba(65,27,107,.035)}
+.wc-decision-toggle{border:0;background:transparent;width:100%;padding:17px 18px;display:flex;align-items:flex-start;gap:12px;text-align:left;color:var(--wc-ink);cursor:pointer}
+.wc-decision-copy{flex:1;min-width:0}
+.wc-decision-copy strong{display:block;font-size:14px;font-weight:560;line-height:1.7}
+.wc-decision-meta{display:flex;align-items:center;gap:12px;margin-top:5px;font-size:10px;color:#a29baa;flex-wrap:wrap}
+.wc-origin-user{color:var(--wc-user)}
+.wc-origin-ai{color:var(--wc-ai)}
+.wc-chevron{color:#b3aabb;margin-top:3px;font-size:16px;transition:transform .2s}
+.wc-decision.is-open .wc-chevron{transform:rotate(180deg)}
+.wc-decision-details{border-top:1px solid #eee8f4;padding:19px 20px;display:grid;gap:18px;background:#fdfbff;animation:wc-enter .2s ease-out}
+.wc-detail-heading{font-size:10px;color:#93859f;font-weight:600;letter-spacing:.5px;margin-bottom:8px}
+.wc-detail-body{font-size:13px;color:#6f657d;line-height:1.95;white-space:pre-wrap;overflow-wrap:anywhere}
+.wc-evidence{padding:13px 16px;border-left:2px solid #d3bce9;background:#f6f0fc;border-radius:0 6px 6px 0}
+.wc-considerations{padding-left:17px;margin:0;display:grid;gap:7px}
+.wc-difference{border-top:1px solid #eee8f4;padding-top:14px}
+.wc-demo-footnote{font-size:10px;color:#a79ead;line-height:1.8;margin-top:17px}
+.wc-app-limitation{display:flex;align-items:flex-start;gap:10px;background:#fffcf5;border-top:1px solid #f1e9d9;padding:15px 25px}
+.wc-info-icon{display:inline-grid;place-items:center;border:1px solid #c6ad7d;color:#ac8f5d;border-radius:50%;width:14px;height:14px;font-size:10px;flex-shrink:0;margin-top:3px;font-family:Georgia,serif}
+.wc-app-limitation p{font-size:10px;color:#9a886c;margin:0;line-height:1.9}
+.wc-app-limitation strong{font-weight:550;margin-right:12px;color:#917b55}
+.wc-demo-provenance{font-size:10px;color:#a19aa9;text-align:center;line-height:1.9;margin:18px auto 0;max-width:780px}
+.wc-empty{text-align:center;padding:43px 15px;border:1px dashed #e0d8e9;border-radius:10px;background:#fdfbff}
+.wc-empty-symbol{width:39px;height:39px;display:grid;place-items:center;border:1px solid #e4dcee;border-radius:50%;margin:0 auto 15px;color:#b6a6c6;font-size:15px}
+.wc-empty p{color:#95869f;font-size:12px;margin:0 0 7px}
+.wc-empty small{color:#b0a5b9;font-size:10px}
+.wc-ordinary-item{border:1px solid #e8e4ef;border-radius:10px;background:#fff;overflow:hidden}
+.wc-ordinary-item summary{list-style:none;display:flex;align-items:center;gap:12px;padding:18px;cursor:pointer}
+.wc-ordinary-number{font-size:10px;color:#b2a4bf}
+.wc-ordinary-item summary>div{flex:1}
+.wc-ordinary-item strong{font-size:13px;font-weight:550;color:#6f607e}
+.wc-ordinary-item summary p{font-size:11px;color:#a091ad;margin:5px 0 0;line-height:1.9}
+.wc-ordinary-detail{font-size:12px;line-height:1.9;color:#8c7b9b;background:#fcfaff;border-top:1px solid #eee8f4;padding:17px 20px}
+.wc-noscript{font-size:13px;color:#8b6a3a;text-align:center;padding:20px}
+.wc-closing{padding-top:72px;padding-bottom:64px;display:flex;align-items:center;gap:25px}
+.wc-closing p{font-size:18px;font-weight:400;color:#a099ad;line-height:1.8;margin:0}
+.wc-closing strong{font-weight:550;color:#494054}
+.wc-closing .wc-link{margin-left:auto;color:var(--wc-purple)}
+.wc-case-footer{border-top:1px solid #eeebf3;padding-top:22px;padding-bottom:27px;display:flex;justify-content:space-between;gap:20px;color:#aaa2b2;font-size:10px}
+/* Personal-homepage project feature, scoped to leave personal placeholders alone. */
+.wc-feature{border:1px solid #e8e0f1;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 14px 45px rgba(59,26,101,.05)}
+.wc-feature-top{padding:24px 36px 0;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.wc-feature-top .wc-kicker{margin:0;font-size:10px}
+.wc-feature-type{color:#a197ad;font-size:10px}
+.wc-feature-body{display:grid;grid-template-columns:.95fr 1fr;gap:45px;align-items:center;padding:42px 42px 46px}
+.wc-feature-name{font-size:37px;font-weight:700;letter-spacing:-1.5px;line-height:1.2;margin:0 0 17px!important;color:var(--wc-ink)}
+.wc-feature-heading{font-size:21px;font-weight:550;line-height:1.7;margin:0 0 17px;color:#3c324d;text-wrap:balance}
+.wc-feature-copy p{font-size:13px;color:#8b8098;line-height:1.95;margin:0 0 27px;max-width:350px}
+.wc-feature .wc-actions{gap:20px}
+.wc-feature .wc-btn{font-size:12px;padding:12px 21px;gap:13px}
+.wc-feature .wc-link{font-size:11px;gap:8px}
+.wc-feature-art{background:#f6f0fd;border-radius:16px;padding:22px 20px 0;overflow:hidden;align-self:stretch;display:flex;align-items:flex-end}
+.wc-feature-art .wc-preview{transform:none;width:100%;border-radius:12px 12px 0 0;border-bottom:0;box-shadow:0 8px 30px rgba(71,32,113,.06)}
+.wc-feature-art .wc-preview-top{height:44px;padding-inline:15px}
+.wc-feature-art .wc-preview-body{padding:20px 17px 18px}
+.wc-feature-art .wc-preview-body h2{font-size:17px;margin:0 0 14px}
+.wc-feature-art .wc-preview-stats{margin-bottom:15px}
+.wc-feature-art .wc-mini-choice{padding:13px 10px}
+.wc-feature-art .wc-mini-choice strong{font-size:11px}
+.wc-feature-bottom{border-top:1px solid #eee9f4;padding:16px 35px;display:flex;align-items:center;justify-content:space-between;gap:15px;color:#a096ad;font-size:10px}
+.wc-feature-bottom .wc-meta-tags{margin:0;font-size:10px}
+@keyframes wc-enter{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1000px){.wc-case-hero{gap:30px}.wc-hero-copy h1{font-size:36px}.wc-why-grid{gap:60px}.wc-orbit-two{width:360px;height:360px;right:-12px;top:-10px}.wc-orbit-one{width:300px;height:300px;right:12px;top:23px}.wc-hero-art{padding-left:0}.wc-float-bottom{left:-10px}.wc-feature-body{gap:25px;padding:35px 30px}.wc-feature-name{font-size:32px}.wc-feature-heading{font-size:18px}.wc-feature .wc-actions{gap:13px}.wc-feature .wc-btn{padding:11px 15px}}
+@media(max-width:760px){.wc-wrap{width:calc(100% - 40px)}.wc-nav{height:82px}.wc-nav nav{gap:18px;font-size:11px}.wc-nav nav>a:first-child,.wc-nav nav>a:nth-child(2){display:none}.wc-nav .wc-nav-demo{padding:8px 13px}.wc-logo{width:36px;height:36px;font-size:22px;border-radius:12px}.wc-brand{font-size:14px;gap:10px}.wc-brand-caption{font-size:9px}.wc-case-hero{grid-template-columns:1fr;gap:40px;padding-top:45px;padding-bottom:66px}.wc-hero-copy h1{font-size:clamp(31px,7vw,44px);letter-spacing:-1.3px;line-height:1.5}.wc-kicker{font-size:10px;margin-bottom:20px}.wc-lead{font-size:13px;max-width:480px}.wc-meta-tags{margin-top:25px}.wc-hero-art{width:100%;max-width:430px;margin-inline:auto;padding:20px 13px 15px}.wc-hero-art:before{inset:-8px 0}.wc-orbit-two{width:310px;height:310px;right:0;top:-10px}.wc-orbit-one{width:260px;height:260px;right:30px;top:14px}.wc-float-top{right:12px;top:-2px}.wc-float-bottom{left:0;bottom:-2px}.wc-preview{transform:rotate(-1.4deg)}.wc-float-label{font-size:10px;padding:7px 12px}.wc-why-section{padding:57px 0 50px}.wc-why-grid{grid-template-columns:1fr;gap:22px}.wc-section-title{font-size:28px;margin-bottom:22px;letter-spacing:-.8px}.wc-prose{font-size:13px}.wc-choice-map{max-width:480px;width:100%;margin-inline:auto}.wc-map-request p{font-size:17px}.wc-how-section{padding-top:58px;padding-bottom:55px}.wc-section-heading{display:block}.wc-section-aside{font-size:12px;margin-top:20px}.wc-section-aside br{display:none}.wc-process{grid-template-columns:1fr;gap:28px;margin-top:35px}.wc-process article{display:grid;grid-template-columns:37px 1fr;column-gap:16px}.wc-step-heading{grid-row:1/4;align-items:flex-start;margin:0;position:relative}.wc-step-line{position:absolute;top:42px;width:1px;bottom:-18px;left:16px;height:auto}.wc-step-end{display:none}.wc-process h3{font-size:17px;margin-top:1px;margin-bottom:8px}.wc-process p{font-size:12px;margin-bottom:10px}.wc-technical{margin-top:30px}.wc-technical-grid{grid-template-columns:1fr 1fr;gap:20px}.wc-demo-section{padding-top:55px;padding-bottom:35px}.wc-demo-heading .wc-section-title{font-size:25px;line-height:1.65}.wc-demo-heading .wc-section-title br{display:none}.wc-demo-heading>p:last-child{font-size:12px;max-width:300px;margin-inline:auto}.wc-demo-intro{margin-top:28px}.wc-demo-shortcut{font-size:10px!important;gap:7px}.wc-real-label{font-size:9px}.wc-app{border-radius:13px}.wc-app-titlebar{padding:15px}.wc-app-titlebar .wc-preview-brand{font-size:12px}.wc-app-subtitle,.wc-app-divider{display:none}.wc-readonly{font-size:9px}.wc-app-body{grid-template-columns:1fr}.wc-app-sidebar{padding:18px 16px 12px;border-right:0;border-bottom:1px solid #eee9f4}.wc-app-sidebar>.wc-small-label{display:none}.wc-app-feature{margin:0 0 13px;font-size:12px}.wc-app-views{grid-template-columns:1fr 1fr;gap:10px}.wc-app-legend{display:none}.wc-app-main{padding:18px 14px}.wc-app-content-heading h3{font-size:17px}.wc-request{margin-bottom:20px}.wc-request summary{font-size:10px;padding:11px 12px}.wc-request p{font-size:11px}.wc-filters{gap:2px;justify-content:space-between}.wc-filter{font-size:10px!important;padding:7px 8px;gap:4px}.wc-filter .wc-dot{width:4px;height:4px}.wc-decision-toggle{padding:15px 12px;gap:9px}.wc-source-icon{width:26px;height:26px;font-size:11px}.wc-decision-copy strong{font-size:12px}.wc-decision-meta{font-size:9px;gap:9px}.wc-decision-details{padding:17px 14px}.wc-detail-body{font-size:11px;line-height:2}.wc-evidence{padding:12px}.wc-app-limitation{padding:14px 15px}.wc-app-limitation p{font-size:9px}.wc-app-limitation strong{display:block;margin-bottom:3px}.wc-app-limitation .wc-info-icon{margin-top:2px}.wc-demo-provenance{font-size:9px;margin-top:15px}.wc-closing{padding-top:46px;padding-bottom:39px;gap:15px;flex-wrap:wrap}.wc-closing p{font-size:14px}.wc-closing .wc-link{font-size:11px;margin-top:10px;margin-left:51px}.wc-case-footer{font-size:9px;padding-bottom:20px}.wc-feature-top{padding:22px 23px 0}.wc-feature-type{font-size:9px}.wc-feature-body{grid-template-columns:1fr;padding:28px 24px 0;gap:28px}.wc-feature-name{font-size:33px}.wc-feature-heading{font-size:20px}.wc-feature-copy p{font-size:12px}.wc-feature-art{padding:20px 18px 0;min-height:300px;border-radius:13px 13px 0 0}.wc-feature-art .wc-preview{transform:rotate(-1deg);transform-origin:bottom left}.wc-feature-bottom{padding:17px 23px}.wc-feature-bottom>span{display:none}.wc-feature{border-radius:17px}}
+@media(prefers-reduced-motion:reduce){.wc-page{scroll-behavior:auto}.wc-btn,.wc-chevron,.wc-summary-plus{transition:none}.wc-decision-details{animation:none}}
+@media(max-width:760px){.wc-prose{font-size:14px}.wc-detail-body{font-size:13px}.wc-decision-copy strong{font-size:13px}.wc-decision-meta{font-size:10px}.wc-filter{font-size:11px!important;min-height:40px}.wc-view-button{min-height:42px}.wc-request p,.wc-ordinary-detail{font-size:13px}}
+
+</style></head><body>
+<div class="portfolio-home" data-portfolio-view="home">
+  <header class="header shell">
+    <a class="identity" href="#home" aria-label="回到首页">
+      <span class="mark" aria-hidden="true">刘</span>
+      <span>刘天贇</span>
+    </a>
+    <nav aria-label="主导航"><a href="#project">项目</a><a class="about-nav" href="#about">关于</a><a class="pill" href="#contact">联系我</a></nav>
+  </header>
+  <main id="home">
+    <section class="hero shell" aria-labelledby="intro-title">
+      <div class="eyebrow">个人主页</div>
+      <h1 id="intro-title">刘天贇</h1>
+      <p class="hero-sub">探索 AI 协作与工具设计</p>
+      <div class="portrait" aria-hidden="true"><span class="portrait-initials">LTY</span></div>
+      <div class="hero-actions"><a class="pill filled" href="#project">查看项目 <span aria-hidden="true">↓</span></a></div>
+    </section>
+    <section class="about-band" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">关于我</h2>
+      <p class="band-note">最近，我在通过个人项目探索 AI 协作与工具设计。开发时，我发现 AI 在完成需求的同时，也会自行补充一些规则。于是我做了 WhoChose，把这些选择和依据整理成可以回看的报告，帮助自己分清：哪些是我的要求，哪些是 AI 的决定。</p>
+    </section>
+    <section class="projects shell" id="project" aria-label="项目展示">
+      <article class="wc-feature">
+        <div class="wc-feature-top"><p class="wc-kicker">01 / 个人项目</p><span class="wc-feature-type">本地工具 · AI 协作</span></div>
+        <div class="wc-feature-body">
+          <div class="wc-feature-copy"><h2 class="wc-feature-name">WhoChose</h2><div class="wc-feature-heading">AI 写出的功能里，<br>重要选择是谁做的？</div><p>将开发中的重要决定、已有依据和相关改动，整理成一份可以逐项查看的报告。</p><div class="wc-actions"><a class="wc-btn wc-btn-primary" href="#case">查看项目案例 <span aria-hidden="true">↗</span></a></div></div>
+          <div class="wc-feature-art" aria-label="WhoChose 真实报告内容预览"><div class="wc-preview"><div class="wc-preview-top"><span class="wc-preview-brand"><span class="wc-mini-mark">w?</span> WhoChose</span><span class="wc-live-dot">报告预览</span></div><div class="wc-preview-body"><div class="wc-preview-label">本次实现审阅</div><h2>补充记账信息</h2><div class="wc-preview-stats"><span><b>3</b> 用户指定</span><span><b>2</b> AI 自主选择</span></div><div class="wc-mini-choice"><span class="wc-source-icon wc-user">人</span><div><strong>日期默认当天，允许补录</strong><small>用户指定</small></div><span>⌄</span></div><div class="wc-mini-choice wc-mini-choice-ai"><span class="wc-source-icon wc-ai">✦</span><div><strong>类别由用户自由填写</strong><small>AI 自主选择</small></div><span>⌄</span></div></div></div></div>
+        </div>
+        <div class="wc-feature-bottom"><div class="wc-meta-tags"><span>决定溯源</span><span>离线报告</span><span>可交互示例</span></div><span>从一次真实开发任务开始了解 ↗</span></div>
+      </article>
+    </section>
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">联系我</h2>
+      <p class="contact-note">欢迎通过邮件交流。</p>
+      <div class="contact-links">
+        <a class="contact-item" href="mailto:liutianyun_2020@163.com"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="m3 5 7 6 7-6"/></svg><span>liutianyun_2020@163.com</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="shell"><span class="footer-mark"><span class="dot" aria-hidden="true"></span>刘天贇</span><span>个人项目与实践</span></footer>
+</div>
+<div class="wc-page" id="case" data-portfolio-view="case" hidden>
+  <a class="wc-skip" href="#main">跳到正文</a>
+  <header class="wc-nav wc-wrap">
+    <a class="wc-brand" href="#project" aria-label="返回个人主页的项目部分"><span class="wc-logo" aria-hidden="true">w<span>?</span></span><span>WhoChose<span class="wc-brand-caption">项目案例</span></span></a>
+  </header>
+  <main id="main">
+    <section class="wc-case-hero wc-wrap" aria-labelledby="case-title">
+      <div class="wc-hero-copy">
+        <p class="wc-kicker"><span class="wc-tiny-line"></span> SELECTED PROJECT / 01</p>
+        <h1 id="case-title">看见 AI 编程中的<br><span>重要选择与依据。</span></h1>
+        <p class="wc-lead">WhoChose 将开发中的重要决定、已有依据和相关改动，整理成一份可以逐项查看的报告。</p>
+        <div class="wc-actions"><a class="wc-btn wc-btn-primary" href="#demo">试着审阅一次 <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div class="wc-hero-art" aria-label="WhoChose 报告预览，3 项用户指定、2 项 AI 自主选择">
+        <div class="wc-orbit wc-orbit-one"></div><div class="wc-orbit wc-orbit-two"></div>
+        <div class="wc-preview">
+          <div class="wc-preview-top"><span class="wc-preview-brand"><span class="wc-mini-mark">w?</span> WhoChose</span><span class="wc-live-dot">报告预览</span></div>
+          <div class="wc-preview-body">
+            <div class="wc-preview-label">本次实现审阅</div><h2>补充记账信息</h2>
+            <div class="wc-preview-stats"><span><b>3</b> 用户指定</span><span><b>2</b> AI 自主选择</span></div>
+            <div class="wc-mini-choice"><span class="wc-source-icon wc-user">人</span><div><strong>日期默认当天，允许补录</strong><small>用户指定</small></div><span>⌄</span></div>
+            <div class="wc-mini-choice wc-mini-choice-ai"><span class="wc-source-icon wc-ai">✦</span><div><strong>类别由用户自由填写</strong><small>AI 自主选择</small></div><span>⌄</span></div>
+            <div class="wc-preview-annotation"><span>↳</span> 同一个功能，不同来源的选择。</div>
+          </div>
+        </div>
+        <span class="wc-float-label wc-float-top"><i class="wc-dot wc-user-dot"></i> 你的要求</span>
+        <span class="wc-float-label wc-float-bottom"><i class="wc-dot wc-ai-dot"></i> AI 补充的规则</span>
+      </div>
+    </section>
+
+    <section class="wc-why-section" id="why" aria-labelledby="why-title">
+      <div class="wc-wrap wc-why-grid">
+        <div>
+          <p class="wc-kicker">01 / 为什么做</p>
+          <h2 class="wc-section-title" id="why-title">功能做出来了，<br>里面的选择是谁做的？</h2>
+          <div class="wc-prose"><p>AI 能很快把一个需求变成可运行的功能。但从需求到实现，中间还有许多选择：日期采用什么格式？类别怎样填写？旧数据如何处理？</p><p>有些来自用户的明确要求，有些由 AI 补充。只看最终结果，很难分清这些选择的来源，也容易忽略它们带来的影响。</p><p class="wc-purpose">我想让这些选择更容易被看见。</p></div>
+        </div>
+        <div class="wc-choice-map" aria-label="从一条需求到多个实现选择的示意">
+          <div class="wc-map-request"><span class="wc-small-label">一句需求</span><p>“增加消费日期；<br>类别作为可选字段。”</p><span class="wc-map-quote-mark" aria-hidden="true">“</span></div>
+          <div class="wc-map-connector" aria-hidden="true"><span></span><span>实现时，还要决定</span></div>
+          <div class="wc-map-choices">
+            <div><i class="wc-dot wc-user-dot"></i><span>日期默认当天</span><small>用户指定</small></div>
+            <div><i class="wc-dot wc-ai-dot"></i><span>是否允许未来日期</span><small>AI 自主选择</small></div>
+            <div><i class="wc-dot wc-ai-dot"></i><span>分类使用自由文本</span><small>AI 自主选择</small></div>
+          </div>
+          <a class="wc-map-link" href="#demo">在报告里看清这些选择 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="wc-how-section wc-wrap" id="how" aria-labelledby="how-title">
+      <div class="wc-section-heading"><div><p class="wc-kicker">02 / 我做了什么</p><h2 class="wc-section-title" id="how-title">让选择有出处，<br>让过程可以回看。</h2></div><p class="wc-section-aside">从开发开始，到交付之后，<br>把散落的信息整理成一条清晰的线。</p></div>
+      <div class="wc-process">
+        <article><div class="wc-step-heading"><span class="wc-step-number">01</span><span class="wc-step-line"></span></div><h3>保留开发的起点</h3><p>在开发开始时，保留一份检查起点。之后对照实际改动，分清本次任务改变了什么。</p><span class="wc-step-caption">从“改了什么”开始</span></article>
+        <article><div class="wc-step-heading"><span class="wc-step-number">02</span><span class="wc-step-line"></span></div><h3>把选择和依据连起来</h3><p>结合用户要求、开发记录和相关代码，整理重要选择的来源。依据不足时，保留来源未确定。</p><span class="wc-step-caption">看见“由谁提出”</span></article>
+        <article><div class="wc-step-heading"><span class="wc-step-number">03</span><span class="wc-step-end">↗</span></div><h3>生成可以回看的报告</h3><p>按功能组织内容，突出重要决定，收起普通调整。报告保存在本地，可以离线打开和逐项查看。</p><span class="wc-step-caption">回到“为什么这样做”</span></article>
+      </div>
+      <details class="wc-technical"><summary><span>想了解一点实现细节？</span><span class="wc-summary-plus" aria-hidden="true">＋</span></summary><div class="wc-technical-grid"><div><b>Hook + Skills</b><p>在开发过程中收集有依据的要求，并整理实现中的重要选择。</p></div><div><b>MCP + SQLite</b><p>提供记录与查询入口，将决定、来源和版本关联保存在本地。</p></div><div><b>文件变化对照</b><p>将选择与本次实际改动关联，保留未读取和未说明的范围。</p></div><div><b>离线 HTML</b><p>把记录组织成可筛选、可展开的单文件报告。</p></div></div></details>
+    </section>
+
+    <section class="wc-demo-section" id="demo" aria-labelledby="demo-title">
+      <div class="wc-wrap">
+        <div class="wc-demo-heading"><p class="wc-kicker">03 / 体验示例</p><h2 class="wc-section-title" id="demo-title">让 AI 给记账工具增加日期和分类，<br><span>它还会自己决定什么？</span></h2><p>看一个实际开发案例，分清哪些是用户的要求，哪些是 AI 补充的规则。</p></div>
+        <div class="wc-demo-intro"><span class="wc-real-label"><i class="wc-dot wc-user-dot"></i> 真实任务报告</span><button class="wc-demo-shortcut" type="button" data-action="show-ai">先看看 AI 补充的 2 项 <span aria-hidden="true">→</span></button></div>
+        <div class="wc-app" id="review-demo">
+          <div class="wc-app-titlebar"><span class="wc-preview-brand"><span class="wc-mini-mark">w?</span> WhoChose <span class="wc-app-divider">/</span><span class="wc-app-subtitle">本次实现审阅</span></span><span class="wc-readonly">◉ 只读示例</span></div>
+          <div class="wc-app-body">
+            <aside class="wc-app-sidebar" aria-label="示例内容切换"><div class="wc-small-label">本次功能</div><div class="wc-app-feature">补充记账信息</div><div class="wc-app-views"><button type="button" class="wc-view-button is-active" data-action="view" data-view="decisions" aria-pressed="true"><span><span aria-hidden="true">▤</span> 重要决定</span><b>5</b></button><button type="button" class="wc-view-button" data-action="view" data-view="ordinary" aria-pressed="false"><span><span aria-hidden="true">☷</span> 其他调整</span><b>3</b></button></div><div class="wc-app-legend"><span><i class="wc-dot wc-user-dot"></i> 用户要求 / 确认</span><span><i class="wc-dot wc-ai-dot"></i> AI 自主选择</span><span><i class="wc-dot wc-unknown-dot"></i> 来源未确定</span></div></aside>
+            <div class="wc-app-main">
+              <details class="wc-request"><summary>这次提出了什么要求？ <span aria-hidden="true">⌄</span></summary><p id="demo-request"></p></details>
+              <div class="wc-app-content-heading"><h3 id="demo-view-title">重要决定</h3><span id="demo-count" aria-live="polite">5 项决定</span></div>
+              <div class="wc-filters" id="demo-filters" role="group" aria-label="按决定来源筛选"></div>
+              <div id="demo-list" class="wc-decisions"></div>
+              <div class="wc-demo-footnote" id="demo-footnote">点击一项决定，查看它的来源与具体影响。</div>
+            </div>
+          </div>
+        </div>
+        <p class="wc-demo-provenance">选择与用户要求来自原报告；普通调整经过精简。AI 选择的设计考量为本页事后补充说明。</p>
+        <noscript><p class="wc-noscript">交互示例需要启用 JavaScript。上方仍可阅读项目介绍。</p></noscript>
+      </div>
+    </section>
+    <section class="wc-closing wc-wrap"><span class="wc-logo" aria-hidden="true">w<span>?</span></span><p>让重要的选择，<br><strong>留下一条可以回看的线索。</strong></p><a class="wc-link" href="#project">返回个人主页 <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="wc-case-footer wc-wrap"><span>WhoChose / 项目案例</span><a href="#main">回到顶部 ↑</a></footer>
+</div>
+<noscript><style>[data-portfolio-view][hidden]{display:block!important}</style></noscript>
+<script>/* Choices come from the supplied report. AI design considerations were added retrospectively for this website. */
+window.WHOCHOSE_DEMO = {
+  "feature": "补充记账信息",
+  "request": "增加消费日期；类别作为可选字段。日期默认当天、允许补录，类别允许留作“未分类”。日期无效时不保存；旧记录仍可读取；旧记录缺失日期时显示“日期未知”，不补造历史。",
+  "counts": {
+    "USER_SPECIFIED": 3,
+    "AI_SUPPLEMENTED": 2,
+    "UNKNOWN": 0
+  },
+  "status": "COMPLETED_WITH_GAPS",
+  "baselineState": "PARTIAL_BASELINE",
+  "choices": [
+    {
+      "id": "choice-1",
+      "title": "消费日期默认本机当天，允许补录，无效日期不保存",
+      "source": "USER_SPECIFIED",
+      "label": "用户指定",
+      "reason": "依据你明确提出的要求实现。",
+      "impact": "根据实现推断：新增记录保存消费日期，省略时使用本次录入的本机当天日期；可通过 --date 补录其他消费日。无效日期在预览前报错，不写账本。预览和记录提示展示日期。",
+      "evidence": "用户原话：“增加消费日期；类别作为可选字段。建议日期默认当天、允许补录，类别允许留作“未分类”\n日期无效时不保存；旧记录仍可读取；旧记录缺失日期时显示“日期未知”，不补造历史”",
+      "difference": "相较于必须手输日期，默认当天可直接录入，补录时可覆盖；相较于只有金额备注，新记录保留消费日供核对。",
+      "rationaleOrigin": "MISSING"
+    },
+    {
+      "id": "choice-2",
+      "title": "类别可选，留空显示未分类",
+      "source": "USER_SPECIFIED",
+      "label": "用户指定",
+      "reason": "依据你明确提出的要求实现。",
+      "impact": "根据实现推断：新增记录可填写类别，省略或空白为未分类；保存前预览、正常列表、回收站和记录核对提示均展示类别。",
+      "evidence": "用户原话：“增加消费日期；类别作为可选字段。建议日期默认当天、允许补录，类别允许留作“未分类”\n日期无效时不保存；旧记录仍可读取；旧记录缺失日期时显示“日期未知”，不补造历史”",
+      "difference": "相较于强制指定类别，不填写也可保存；相较于只有备注，可单独保留类别信息。",
+      "rationaleOrigin": "MISSING"
+    },
+    {
+      "id": "choice-3",
+      "title": "旧记录缺日期显示日期未知，不补写历史",
+      "source": "USER_SPECIFIED",
+      "label": "用户指定",
+      "reason": "依据你明确提出的要求实现。",
+      "impact": "根据实现推断：旧记录缺日期或类别仍可读取，分别显示日期未知和未分类；读取、删除、恢复和新增其他记录均不补写旧字段，保留原编号、其他字段和顺序。",
+      "evidence": "用户原话：“增加消费日期；类别作为可选字段。建议日期默认当天、允许补录，类别允许留作“未分类”\n日期无效时不保存；旧记录仍可读取；旧记录缺失日期时显示“日期未知”，不补造历史”",
+      "difference": "相较于回填当天，不会将录入时间冒充历史消费时间；相较于强制迁移，可继续使用旧账本。",
+      "rationaleOrigin": "MISSING"
+    },
+    {
+      "id": "choice-4",
+      "title": "日期使用 YYYY-MM-DD，校验日历有效性，不限制未来日期",
+      "source": "AI_SUPPLEMENTED",
+      "label": "AI 自主选择",
+      "reason": "统一输入格式，减少日期歧义；校验真实日期，同时保留录入有效日期的自由。",
+      "impact": "根据实现推断：输入仅接受 YYYY-MM-DD 纯日期，无效日、紧凑日期、周日期或时刻会报错；有效未来日期可录入。账本已有无效日期或非文本类别时报错停止操作，不覆盖文件；缺失字段仍兼容。",
+      "evidence": "",
+      "difference": "相较于宽松解析多种日期格式，固定输入格式且不含时刻；相较于只允许过去日期，未增加未来日期限制。已有无效新字段不被静默替换成当天。",
+      "rationaleOrigin": "RETROSPECTIVE",
+      "reasonLabel": "设计考量 · 事后补充",
+      "considerations": [
+        "固定为 YYYY-MM-DD，让输入和展示保持一致，也避免月、日顺序混淆。",
+        "校验真实的日历日期，防止不存在的日期进入账本。",
+        "将日期是否合法与是否允许未来日期分开，避免额外限制用户输入；代价是未来误填需要用户自行核对。"
+      ]
+    },
+    {
+      "id": "choice-5",
+      "title": "类别由用户手动填写自由文本，不自动分类",
+      "source": "AI_SUPPLEMENTED",
+      "label": "AI 自主选择",
+      "reason": "让用户直接使用自己的分类方式，先保持录入灵活、操作简单。",
+      "impact": "根据实现推断：--category 接受自由文本，去首尾空格后保存，无预设列表，也不根据备注自动推断类别。",
+      "evidence": "",
+      "difference": "相较于固定列表或自动分类，用户自己填写，可能出现同义但不同文字的类别。",
+      "rationaleOrigin": "RETROSPECTIVE",
+      "reasonLabel": "设计考量 · 事后补充",
+      "considerations": [
+        "无需先维护分类列表，填写一笔记录时可以直接输入。",
+        "容纳不同人的分类习惯，保留临时或少见的分类名称。",
+        "去掉首尾空格减少意外差异；代价是近义分类仍可能并存，后续统计需要统一名称。"
+      ]
+    }
+  ],
+  "ordinary": [
+    {
+      "name": "测试验证",
+      "summary": "补充日期、类别、无效输入和旧记录兼容测试。原报告记录了 24 项测试通过，使用合成的临时账本。",
+      "detail": "覆盖当天日期默认、补录、类别空值、无效日期不写入、旧记录不补写及原重复规则保持。这是原报告中的执行摘要。"
+    },
+    {
+      "name": "内部整理",
+      "summary": "统一金额与展示文本的处理，保持已有的重复提醒行为。",
+      "detail": "重复提醒继续比较金额和去掉首尾空格的备注，日期和类别不参与匹配；旧记录仍然兼容。"
+    },
+    {
+      "name": "使用说明",
+      "summary": "补充日期和类别的用法、兼容边界，更新过时说明。",
+      "detail": "列表保留原顺序；这次任务没有增加排序、筛选或旧记录编辑。"
+    }
+  ]
+};
+
+'use strict';
+(() => {
+  const data = window.WHOCHOSE_DEMO;
+  const app = document.getElementById('review-demo');
+  if (!app || !data) return;
+  const state = {view: 'decisions', filter: 'all', expanded: 'choice-1'};
+  const filters = [
+    {key:'all', label:'全部', count:data.choices.length},
+    {key:'USER_SPECIFIED', label:'用户', count:data.counts.USER_SPECIFIED, dot:'user'},
+    {key:'AI_SUPPLEMENTED', label:'AI', count:data.counts.AI_SUPPLEMENTED, dot:'ai'},
+    {key:'UNKNOWN', label:'未确定', count:data.counts.UNKNOWN, dot:'unknown'}
+  ];
+  const $ = id => document.getElementById(id);
+  const element = (tag, className, text) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  };
+  const actionButton = (className, action, text) => {
+    const node = element('button', className, text);
+    node.type = 'button'; node.dataset.action = action; return node;
+  };
+  const detailSection = (heading, content, className = '') => {
+    const section = element('div', className);
+    section.append(element('div', 'wc-detail-heading', heading), content);
+    return section;
+  };
+  function choiceCard(choice) {
+    const open = state.expanded === choice.id;
+    const user = choice.source === 'USER_SPECIFIED';
+    const article = element('article', 'wc-decision' + (open ? ' is-open' : ''));
+    const toggle = actionButton('wc-decision-toggle', 'choice');
+    toggle.dataset.id = choice.id;
+    toggle.id = 'toggle-' + choice.id;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-controls', 'details-' + choice.id);
+    const sourceIcon = element('span', 'wc-source-icon ' + (user ? 'wc-user' : 'wc-ai'), user ? '人' : '✦');
+    sourceIcon.setAttribute('aria-hidden', 'true');
+    const copy = element('span', 'wc-decision-copy');
+    copy.append(element('strong', '', choice.title));
+    const meta = element('span', 'wc-decision-meta');
+    meta.append(element('span', user ? 'wc-origin-user' : 'wc-origin-ai', choice.label), element('span', '', user ? '有用户原话' : '设计考量 · 事后补充'));
+    copy.append(meta);
+    const chevron = element('span', 'wc-chevron', '⌄');
+    chevron.setAttribute('aria-hidden', 'true');
+    toggle.append(sourceIcon, copy, chevron);
+    const details = element('div', 'wc-decision-details');
+    details.id = 'details-' + choice.id;
+    details.hidden = !open;
+    details.setAttribute('role', 'region');
+    details.setAttribute('aria-labelledby', toggle.id);
+    details.append(detailSection('实现后的行为', element('div', 'wc-detail-body', choice.impact.replace(/^根据实现推断：/, ''))));
+    if (user) {
+      details.append(detailSection('当时的用户要求', element('div', 'wc-detail-body wc-evidence', choice.evidence)));
+    } else {
+      const list = element('ul', 'wc-detail-body wc-considerations');
+      for (const consideration of choice.considerations ?? [choice.reason]) list.append(element('li', '', consideration));
+      details.append(detailSection(choice.reasonLabel || '设计考量 · 事后补充', list));
+    }
+    details.append(detailSection('这个选择意味着什么', element('div', 'wc-detail-body', choice.difference), 'wc-difference'));
+    article.append(toggle, details);
+    return article;
+  }
+  function ordinaryCard(change, index) {
+    const details = element('details', 'wc-ordinary-item');
+    const summary = element('summary');
+    const content = element('div');
+    content.append(element('strong', '', change.name), element('p', '', change.summary));
+    const arrow = element('span', 'wc-chevron', '⌄');
+    arrow.setAttribute('aria-hidden', 'true');
+    summary.append(element('span', 'wc-ordinary-number', String(index + 1).padStart(2, '0')), content, arrow);
+    details.append(summary, element('div', 'wc-ordinary-detail', change.detail));
+    return details;
+  }
+  function render() {
+    const decisions = state.view === 'decisions';
+    document.querySelectorAll('[data-action="view"]').forEach(button => {
+      const selected = button.dataset.view === state.view;
+      button.classList.toggle('is-active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    $('demo-view-title').textContent = decisions ? '重要决定' : '其他调整';
+    $('demo-filters').hidden = !decisions;
+    $('demo-filters').replaceChildren(...filters.map(filter => {
+      const button = actionButton('wc-filter' + (state.filter === filter.key ? ' is-active' : ''), 'filter');
+      button.dataset.filter = filter.key;
+      button.setAttribute('aria-pressed', String(state.filter === filter.key));
+      if (filter.dot) {
+        const dot = element('i', 'wc-dot wc-' + filter.dot + '-dot');
+        dot.setAttribute('aria-hidden', 'true'); button.append(dot);
+      }
+      button.append(element('span', '', filter.label), element('span', 'wc-filter-count', String(filter.count)));
+      return button;
+    }));
+    if (decisions) {
+      const shown = data.choices.filter(choice => state.filter === 'all' || choice.source === state.filter);
+      $('demo-count').textContent = shown.length + ' 项决定';
+      $('demo-list').replaceChildren(...shown.map(choiceCard));
+      if (!shown.length) {
+        const empty = element('div', 'wc-empty');
+        empty.append(element('div', 'wc-empty-symbol', '?'), element('p', '', '这份报告中，没有来源未确定的决定。'), element('small', '', '切换其他来源，继续查看这次开发中的选择。'));
+        $('demo-list').append(empty);
+      }
+      $('demo-footnote').textContent = '点击一项决定查看详情。行为描述来自原报告的代码分析，不等同于运行验证。';
+    } else {
+      $('demo-count').textContent = data.ordinary.length + ' 组调整';
+      $('demo-list').replaceChildren(...data.ordinary.map(ordinaryCard));
+      $('demo-footnote').textContent = '普通调整按内容归组；以下文字据原报告精简，点击可继续查看。';
+    }
+  }
+  document.addEventListener('click', event => {
+    const button = event.target.closest('button[data-action]');
+    if (!button) return;
+    const action = button.dataset.action;
+    let focusSelector = null;
+    if (action === 'filter') {
+      state.filter = button.dataset.filter;
+      state.expanded = null;
+      focusSelector = '[data-action="filter"][data-filter="' + state.filter + '"]';
+    } else if (action === 'choice') {
+      state.expanded = state.expanded === button.dataset.id ? null : button.dataset.id;
+      focusSelector = '#toggle-' + button.dataset.id;
+    } else if (action === 'view') {
+      state.view = button.dataset.view;
+    } else if (action === 'show-ai') {
+      state.view = 'decisions'; state.filter = 'AI_SUPPLEMENTED';
+      state.expanded = data.choices.find(choice => choice.source === 'AI_SUPPLEMENTED')?.id ?? null;
+    } else return;
+    render();
+    if (focusSelector) document.querySelector(focusSelector)?.focus({preventScroll:true});
+  });
+  $('demo-request').textContent = data.request;
+  render();
+})();
+
+
+(() => {
+  const home = document.querySelector('[data-portfolio-view="home"]');
+  const project = document.querySelector('[data-portfolio-view="case"]');
+  const homeAnchors = new Set(['', 'home', 'project', 'about', 'contact']);
+  function route() {
+    const anchor = location.hash.slice(1);
+    const showHome = homeAnchors.has(anchor);
+    home.hidden = !showHome;
+    project.hidden = showHome;
+    document.title = showHome ? '刘天贇｜个人项目与实践' : 'WhoChose｜刘天贇的个人项目';
+    requestAnimationFrame(() => {
+      const destination = document.getElementById(anchor);
+      if (destination && !destination.closest('[data-portfolio-view][hidden]')) {
+        destination.scrollIntoView({block:'start', behavior:'instant'});
+      } else window.scrollTo({top:0, behavior:'instant'});
+    });
+  }
+  window.addEventListener('hashchange', route);
+  route();
+})();
+</script></body></html>
