@@ -34,9 +34,17 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
 .portfolio-home .hero-actions{ display:flex; justify-content:center; align-items:center; gap:14px; margin-top:34px; }
 .portfolio-home .text-link{ padding:13px 20px; font-size:14px; color:#60667b; }
 .portfolio-home .text-link:hover{ color:var(--purple); }
-.portfolio-home .about-band{ background:var(--purple); color:#fff; padding:50px 24px 125px; text-align:center; }
+.portfolio-home .about-band{ background:var(--purple); color:#fff; padding:54px 24px 132px; text-align:center; }
 .portfolio-home h2{ font-size:27px; line-height:1.4; font-weight:650; margin:0; letter-spacing:-.5px; }
 .portfolio-home .band-note{ color:#eee2ff; margin:20px auto 0; max-width:650px; font-size:16px; line-height:2; text-wrap:pretty; }
+.portfolio-home .about-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; width:min(1080px,100%); margin:30px auto 0; text-align:left; }
+.portfolio-home .about-card{ background:#fdfbff; color:var(--ink); border:1px solid rgba(255,255,255,.7); border-radius:20px; padding:30px 32px 32px; box-shadow:0 8px 24px rgba(41,7,95,.08); }
+.portfolio-home .about-card-head{ display:flex; align-items:center; gap:14px; margin-bottom:19px; }
+.portfolio-home .about-icon{ display:grid; place-items:center; width:43px; height:43px; flex-shrink:0; border-radius:13px; background:#f0e7ff; color:#7938cb; }
+.portfolio-home .about-icon svg{ width:23px; height:23px; }
+.portfolio-home .about-label{ display:block; color:#848091; font-size:11px; letter-spacing:1.6px; margin-bottom:7px; }
+.portfolio-home .about-card h3{ color:var(--ink); font-size:21px; font-weight:650; line-height:1.5; margin:0; letter-spacing:-.3px; }
+.portfolio-home .about-card p{ color:#646b80; font-size:14px; line-height:2; margin:0; text-wrap:pretty; }
 .portfolio-home .lines{ display:flex; flex-direction:column; gap:11px; }
 .portfolio-home .lines span{ display:block; height:8px; border-radius:8px; background:#e9eaf1; }
 .portfolio-home .about-band .lines{ width:min(470px,85%); margin:28px auto 0; align-items:center; gap:12px; }
@@ -87,7 +95,14 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
 .portfolio-home .portrait{ width:84px; height:84px; margin-top:27px; }
 .portfolio-home .portrait-initials{ font-size:22px; }
 .portfolio-home .portrait svg{ width:65px; height:65px; }
-.portfolio-home .about-band{ padding:42px 22px 104px; }
+.portfolio-home .about-band{ padding:42px 18px 104px; }
+.portfolio-home .about-grid{ grid-template-columns:1fr; gap:16px; margin-top:25px; }
+.portfolio-home .about-card{ padding:24px; border-radius:16px; }
+.portfolio-home .about-card-head{ gap:12px; margin-bottom:16px; }
+.portfolio-home .about-card h3{ font-size:19px; }
+.portfolio-home .about-card p{ font-size:14px; line-height:1.95; }
+.portfolio-home .about-icon{ width:39px; height:39px; border-radius:11px; }
+.portfolio-home .about-label{ font-size:10px; margin-bottom:5px; }
 .portfolio-home .band-note{ font-size:14px; line-height:2; margin-top:17px; }
 .portfolio-home h2{ font-size:23px; }
 .portfolio-home .projects{ margin-top:-64px; }
@@ -346,7 +361,22 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
     </section>
     <section class="about-band" id="about" aria-labelledby="about-title">
       <h2 id="about-title">关于我</h2>
-      <p class="band-note">最近，我在通过个人项目探索 AI 协作与工具设计。开发时，我发现 AI 在完成需求的同时，也会自行补充一些规则。于是我做了 WhoChose，把这些选择和依据整理成可以回看的报告，帮助自己分清：哪些是我的要求，哪些是 AI 的决定。</p>
+      <div class="about-grid">
+        <article class="about-card" aria-labelledby="research-title">
+          <div class="about-card-head">
+            <span class="about-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l4-5 4 2 4-7"/><circle cx="12" cy="10" r="1.2" fill="currentColor" stroke="none"/><circle cx="16" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+            <div><span class="about-label">科研探索</span><h3 id="research-title">认知任务建模与模型评测</h3></div>
+          </div>
+          <p>我的科研工作围绕认知任务建模展开，涉及模型训练、评测方案与实验结果分析。我关注不同模型和数据条件下的表现差异，也重视实验对照、数据划分，以及评测结论是否可靠。</p>
+        </article>
+        <article class="about-card" aria-labelledby="practice-title">
+          <div class="about-card-head">
+            <span class="about-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"/><path d="M3.5 9h17M8 13l-2 2 2 2m8-4 2 2-2 2m-5 0 2-4"/></svg></span>
+            <div><span class="about-label">项目实践</span><h3 id="practice-title">AI 协作与工具设计</h3></div>
+          </div>
+          <p>我也通过个人项目探索 AI 如何参与需求与实现。WhoChose 来自开发中的一个疑问：AI 完成功能时，还替我做了哪些选择？我尝试把这些选择、依据和实际影响整理成可以回看的报告，让协作过程更清楚。</p>
+        </article>
+      </div>
     </section>
     <section class="projects shell" id="project" aria-label="项目展示">
       <article class="wc-feature">
