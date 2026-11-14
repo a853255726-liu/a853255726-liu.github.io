@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="刘天贇的个人项目与实践：探索 AI 应用与交互体验。">
-<meta name="theme-color" content="#6e07f3"><title>刘天贇｜个人项目与实践</title>
+<meta name="description" content="刘天贇的个人网站：探索 AI 应用与交互体验。">
+<meta name="theme-color" content="#6e07f3"><title>刘天贇的个人网站</title>
 <style>body{margin:0}[data-portfolio-view][hidden]{display:none!important}
 :root{ --purple:#6e07f3; --ink:#141c3a; --muted:#7d8296; --line:#e8eaf1; --soft:#f6f5fb; }
 .portfolio-home *{ box-sizing:border-box; }
@@ -349,7 +349,7 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
       <span class="mark" aria-hidden="true">刘</span>
       <span>刘天贇</span>
     </a>
-    <nav aria-label="主导航"><a href="#project">项目</a><a class="about-nav" href="#about">关于</a><a class="pill" href="#contact">联系我</a></nav>
+    <nav aria-label="主导航"><a href="#project">作品</a><a class="about-nav" href="#about">关于</a><a class="pill" href="#contact">联系我</a></nav>
   </header>
   <main id="home">
     <section class="hero shell" aria-labelledby="intro-title">
@@ -357,7 +357,7 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
       <h1 id="intro-title">刘天贇</h1>
       <p class="hero-sub">探索 AI 应用与交互体验</p>
       <div class="portrait" aria-hidden="true"><span class="portrait-initials">LTY</span></div>
-      <div class="hero-actions"><a class="pill filled" href="#project">查看项目 <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-actions"><a class="pill filled" href="#project">查看作品 <span aria-hidden="true">↓</span></a></div>
     </section>
     <section class="about-band" id="about" aria-labelledby="about-title">
       <h2 id="about-title">关于我</h2>
@@ -723,7 +723,7 @@ window.WHOCHOSE_DEMO = {
     const showHome = homeAnchors.has(anchor);
     home.hidden = !showHome;
     project.hidden = showHome;
-    document.title = showHome ? '刘天贇｜个人项目与实践' : 'WhoChose｜刘天贇的个人项目';
+    document.title = showHome ? '刘天贇的个人网站' : 'WhoChose｜刘天贇的个人项目';
     requestAnimationFrame(() => {
       const destination = document.getElementById(anchor);
       if (destination && !destination.closest('[data-portfolio-view][hidden]')) {
