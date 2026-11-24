@@ -3,6 +3,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="刘天贇的个人网站：探索 AI 应用与交互体验。">
 <meta name="theme-color" content="#6e07f3"><title>刘天贇的个人网站</title>
+<link rel="stylesheet" href="project-header.css">
+<link rel="stylesheet" href="research-audit-flow.css">
 <style>body{margin:0}[data-portfolio-view][hidden]{display:none!important}
 :root{ --purple:#6e07f3; --ink:#141c3a; --muted:#7d8296; --line:#e8eaf1; --soft:#f6f5fb; }
 .portfolio-home *{ box-sizing:border-box; }
@@ -14,8 +16,8 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
 .portfolio-home .shell{ width:min(1080px,calc(100% - 64px)); margin-inline:auto; }
 .portfolio-home .header{ height:112px; display:flex; align-items:center; justify-content:space-between; }
 .portfolio-home .identity{ display:flex; align-items:center; gap:13px; font-size:14px; font-weight:600; }
-.portfolio-home .mark{ width:37px; height:37px; border:2px solid var(--purple); border-radius:12px; display:grid; place-items:center; color:var(--purple); }
-.portfolio-home .mark svg{ width:22px; height:22px; }
+.portfolio-home .mark{ width:37px; height:37px; flex:none; border-radius:50%; background:#f3ebff; display:grid; place-items:center; position:relative; color:#8d51d1; font-size:11px; font-weight:600; letter-spacing:1px; padding-left:1px; }
+.portfolio-home .mark::after{ content:""; width:7px; height:7px; background:#d7c0f6; border:2px solid #fff; border-radius:50%; position:absolute; right:0; bottom:2px; box-sizing:content-box; }
 .portfolio-home nav{ display:flex; align-items:center; gap:32px; font-size:14px; }
 .portfolio-home nav a:not(.pill):hover{ color:var(--purple); }
 .portfolio-home .pill{ display:inline-flex; align-items:center; justify-content:center; gap:12px; padding:12px 24px; border:1.5px solid var(--purple); color:var(--purple); border-radius:999px; font-size:14px; font-weight:500; transition:background .18s,color .18s,transform .18s; }
@@ -23,13 +25,8 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
 .portfolio-home .pill.filled{ background:var(--purple); color:#fff; }
 .portfolio-home a.pill.filled:hover{ background:#5804c5; }
 .portfolio-home .hero{ text-align:center; padding:44px 0 62px; }
-.portfolio-home .eyebrow{ font-size:11px; letter-spacing:3px; color:var(--muted); font-weight:600; }
 .portfolio-home h1{ margin:25px 0 17px; font-size:clamp(42px,5vw,64px); line-height:1.2; font-weight:720; letter-spacing:-2px; }
-.portfolio-home .hero-sub{ margin:0; font-size:19px; line-height:1.8; color:#9296a5; font-weight:400; }
-.portfolio-home .portrait{ width:96px; height:96px; margin:32px auto 0; border-radius:50%; background:#f3ebff; display:grid; place-items:center; position:relative; }
-.portfolio-home .portrait-initials{ color:#8d51d1; font-size:25px; font-weight:600; letter-spacing:3px; padding-left:3px; }
-.portfolio-home .portrait svg{ width:76px; height:76px; color:#b789ef; }
-.portfolio-home .portrait::after{ content:""; width:13px; height:13px; background:#d7c0f6; border:4px solid #fff; border-radius:50%; position:absolute; right:0; bottom:9px; box-sizing:content-box; }
+.portfolio-home .hero-sub{ margin:0; font-size:clamp(14px,2vw,17px); line-height:1.7; color:#6b7082; }
 .portfolio-home .micro{ color:#969aab; font-size:11px; letter-spacing:1px; }
 .portfolio-home .hero-actions{ display:flex; justify-content:center; align-items:center; gap:14px; margin-top:34px; }
 .portfolio-home .text-link{ padding:13px 20px; font-size:14px; color:#60667b; }
@@ -85,16 +82,11 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
 @media (max-width:680px){.portfolio-home .shell{ width:calc(100% - 36px); }
 .portfolio-home .header{ height:86px; }
 .portfolio-home .identity{ gap:9px; font-size:12px; }
-.portfolio-home .mark{ width:31px; height:31px; border-radius:10px; }
+.portfolio-home .mark{ width:31px; height:31px; font-size:10px; }
 .portfolio-home nav{ gap:18px; font-size:12px; }
 .portfolio-home nav .pill{ padding:9px 15px; font-size:12px; }
-.portfolio-home nav .about-nav{ display:none; }
 .portfolio-home .hero{ padding:42px 0 65px; }
 .portfolio-home h1{ letter-spacing:-1px; }
-.portfolio-home .hero-sub{ font-size:15px; }
-.portfolio-home .portrait{ width:84px; height:84px; margin-top:27px; }
-.portfolio-home .portrait-initials{ font-size:22px; }
-.portfolio-home .portrait svg{ width:65px; height:65px; }
 .portfolio-home .about-band{ padding:42px 18px 104px; }
 .portfolio-home .about-grid{ grid-template-columns:1fr; gap:16px; margin-top:25px; }
 .portfolio-home .about-card{ padding:24px; border-radius:16px; }
@@ -138,14 +130,9 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
 .wc-page [hidden]{display:none!important}
 .wc-page [id]{scroll-margin-top:30px}
 .wc-wrap{width:min(1120px,calc(100% - 80px));margin-inline:auto}
-.wc-nav{display:flex;align-items:center;justify-content:space-between;height:100px;gap:24px}
-.wc-brand{display:flex;align-items:center;gap:12px;font-size:16px;font-weight:700;line-height:1.2}
 .wc-logo{display:inline-flex;align-items:center;justify-content:center;width:43px;height:43px;border:1.7px solid var(--wc-purple);border-radius:14px;color:var(--wc-purple);font-weight:750;font-size:25px;letter-spacing:-3px;font-family:"Segoe UI",sans-serif;flex-shrink:0}
 .wc-logo>span{font-size:18px;margin:0 3px 0 2px;transform:translateY(-3px)}
-.wc-brand-caption{display:block;margin-top:6px;font-size:10px;letter-spacing:1px;font-weight:400;color:#9094a3}
-.wc-nav nav{display:flex;align-items:center;gap:29px;font-size:13px;color:#686e81}
-.wc-nav nav a:hover,.wc-link:hover{color:var(--wc-purple)}
-.wc-nav .wc-nav-demo{border:1px solid #dfcdf7;border-radius:999px;padding:10px 18px;color:var(--wc-purple)}
+.wc-link:hover{color:var(--wc-purple)}
 .wc-skip{position:fixed;left:20px;top:14px;background:var(--wc-ink);color:white!important;border-radius:8px;z-index:10;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap}
 .wc-skip:focus{clip-path:none;width:auto;height:auto;padding:12px 20px}
 .wc-kicker{display:flex;align-items:center;gap:10px;font-size:11px;font-weight:650;letter-spacing:1.8px;color:#737f91;margin-bottom:24px}
@@ -318,7 +305,6 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
 .wc-feature{border:1px solid #e8e0f1;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 14px 45px rgba(59,26,101,.05)}
 .wc-feature-top{padding:24px 36px 0;display:flex;align-items:center;justify-content:space-between;gap:15px}
 .wc-feature-top .wc-kicker{margin:0;font-size:10px}
-.wc-feature-type{color:#a197ad;font-size:10px}
 .wc-feature-body{display:grid;grid-template-columns:.95fr 1fr;gap:45px;align-items:center;padding:42px 42px 46px}
 .wc-feature-name{font-size:37px;font-weight:700;letter-spacing:-1.5px;line-height:1.2;margin:0 0 17px!important;color:var(--wc-ink)}
 .wc-feature-heading{font-size:21px;font-weight:550;line-height:1.7;margin:0 0 17px;color:#3c324d;text-wrap:balance}
@@ -338,25 +324,24 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
 .wc-feature-bottom .wc-meta-tags{margin:0;font-size:10px}
 @keyframes wc-enter{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:1000px){.wc-case-hero{gap:30px}.wc-hero-copy h1{font-size:36px}.wc-why-grid{gap:60px}.wc-orbit-two{width:360px;height:360px;right:-12px;top:-10px}.wc-orbit-one{width:300px;height:300px;right:12px;top:23px}.wc-hero-art{padding-left:0}.wc-float-bottom{left:-10px}.wc-feature-body{gap:25px;padding:35px 30px}.wc-feature-name{font-size:32px}.wc-feature-heading{font-size:18px}.wc-feature .wc-actions{gap:13px}.wc-feature .wc-btn{padding:11px 15px}}
-@media(max-width:760px){.wc-wrap{width:calc(100% - 40px)}.wc-nav{height:82px}.wc-nav nav{gap:18px;font-size:11px}.wc-nav nav>a:first-child,.wc-nav nav>a:nth-child(2){display:none}.wc-nav .wc-nav-demo{padding:8px 13px}.wc-logo{width:36px;height:36px;font-size:22px;border-radius:12px}.wc-brand{font-size:14px;gap:10px}.wc-brand-caption{font-size:9px}.wc-case-hero{grid-template-columns:1fr;gap:40px;padding-top:45px;padding-bottom:66px}.wc-hero-copy h1{font-size:clamp(31px,7vw,44px);letter-spacing:-1.3px;line-height:1.5}.wc-kicker{font-size:10px;margin-bottom:20px}.wc-lead{font-size:13px;max-width:480px}.wc-meta-tags{margin-top:25px}.wc-hero-art{width:100%;max-width:430px;margin-inline:auto;padding:20px 13px 15px}.wc-hero-art:before{inset:-8px 0}.wc-orbit-two{width:310px;height:310px;right:0;top:-10px}.wc-orbit-one{width:260px;height:260px;right:30px;top:14px}.wc-float-top{right:12px;top:-2px}.wc-float-bottom{left:0;bottom:-2px}.wc-preview{transform:rotate(-1.4deg)}.wc-float-label{font-size:10px;padding:7px 12px}.wc-why-section{padding:57px 0 50px}.wc-why-grid{grid-template-columns:1fr;gap:22px}.wc-section-title{font-size:28px;margin-bottom:22px;letter-spacing:-.8px}.wc-prose{font-size:13px}.wc-choice-map{max-width:480px;width:100%;margin-inline:auto}.wc-map-request p{font-size:17px}.wc-how-section{padding-top:58px;padding-bottom:55px}.wc-section-heading{display:block}.wc-section-aside{font-size:12px;margin-top:20px}.wc-section-aside br{display:none}.wc-process{grid-template-columns:1fr;gap:28px;margin-top:35px}.wc-process article{display:grid;grid-template-columns:37px 1fr;column-gap:16px}.wc-step-heading{grid-row:1/4;align-items:flex-start;margin:0;position:relative}.wc-step-line{position:absolute;top:42px;width:1px;bottom:-18px;left:16px;height:auto}.wc-step-end{display:none}.wc-process h3{font-size:17px;margin-top:1px;margin-bottom:8px}.wc-process p{font-size:12px;margin-bottom:10px}.wc-technical{margin-top:30px}.wc-technical-grid{grid-template-columns:1fr 1fr;gap:20px}.wc-demo-section{padding-top:55px;padding-bottom:35px}.wc-demo-heading .wc-section-title{font-size:25px;line-height:1.65}.wc-demo-heading .wc-section-title br{display:none}.wc-demo-heading>p:last-child{font-size:12px;max-width:300px;margin-inline:auto}.wc-demo-intro{margin-top:28px}.wc-demo-shortcut{font-size:10px!important;gap:7px}.wc-real-label{font-size:9px}.wc-app{border-radius:13px}.wc-app-titlebar{padding:15px}.wc-app-titlebar .wc-preview-brand{font-size:12px}.wc-app-subtitle,.wc-app-divider{display:none}.wc-readonly{font-size:9px}.wc-app-body{grid-template-columns:1fr}.wc-app-sidebar{padding:18px 16px 12px;border-right:0;border-bottom:1px solid #eee9f4}.wc-app-sidebar>.wc-small-label{display:none}.wc-app-feature{margin:0 0 13px;font-size:12px}.wc-app-views{grid-template-columns:1fr 1fr;gap:10px}.wc-app-legend{display:none}.wc-app-main{padding:18px 14px}.wc-app-content-heading h3{font-size:17px}.wc-request{margin-bottom:20px}.wc-request summary{font-size:10px;padding:11px 12px}.wc-request p{font-size:11px}.wc-filters{gap:2px;justify-content:space-between}.wc-filter{font-size:10px!important;padding:7px 8px;gap:4px}.wc-filter .wc-dot{width:4px;height:4px}.wc-decision-toggle{padding:15px 12px;gap:9px}.wc-source-icon{width:26px;height:26px;font-size:11px}.wc-decision-copy strong{font-size:12px}.wc-decision-meta{font-size:9px;gap:9px}.wc-decision-details{padding:17px 14px}.wc-detail-body{font-size:11px;line-height:2}.wc-evidence{padding:12px}.wc-app-limitation{padding:14px 15px}.wc-app-limitation p{font-size:9px}.wc-app-limitation strong{display:block;margin-bottom:3px}.wc-app-limitation .wc-info-icon{margin-top:2px}.wc-demo-provenance{font-size:9px;margin-top:15px}.wc-closing{padding-top:46px;padding-bottom:39px;gap:15px;flex-wrap:wrap}.wc-closing p{font-size:14px}.wc-closing .wc-link{font-size:11px;margin-top:10px;margin-left:51px}.wc-case-footer{font-size:9px;padding-bottom:20px}.wc-feature-top{padding:22px 23px 0}.wc-feature-type{font-size:9px}.wc-feature-body{grid-template-columns:1fr;padding:28px 24px 0;gap:28px}.wc-feature-name{font-size:33px}.wc-feature-heading{font-size:20px}.wc-feature-copy p{font-size:12px}.wc-feature-art{padding:20px 18px 0;min-height:300px;border-radius:13px 13px 0 0}.wc-feature-art .wc-preview{transform:rotate(-1deg);transform-origin:bottom left}.wc-feature-bottom{padding:17px 23px}.wc-feature-bottom>span{display:none}.wc-feature{border-radius:17px}}
+@media(max-width:760px){.wc-wrap{width:calc(100% - 40px)}.wc-logo{width:36px;height:36px;font-size:22px;border-radius:12px}.wc-case-hero{grid-template-columns:1fr;gap:40px;padding-top:45px;padding-bottom:66px}.wc-hero-copy h1{font-size:clamp(31px,7vw,44px);letter-spacing:-1.3px;line-height:1.5}.wc-kicker{font-size:10px;margin-bottom:20px}.wc-lead{font-size:13px;max-width:480px}.wc-meta-tags{margin-top:25px}.wc-hero-art{width:100%;max-width:430px;margin-inline:auto;padding:20px 13px 15px}.wc-hero-art:before{inset:-8px 0}.wc-orbit-two{width:310px;height:310px;right:0;top:-10px}.wc-orbit-one{width:260px;height:260px;right:30px;top:14px}.wc-float-top{right:12px;top:-2px}.wc-float-bottom{left:0;bottom:-2px}.wc-preview{transform:rotate(-1.4deg)}.wc-float-label{font-size:10px;padding:7px 12px}.wc-why-section{padding:57px 0 50px}.wc-why-grid{grid-template-columns:1fr;gap:22px}.wc-section-title{font-size:28px;margin-bottom:22px;letter-spacing:-.8px}.wc-prose{font-size:13px}.wc-choice-map{max-width:480px;width:100%;margin-inline:auto}.wc-map-request p{font-size:17px}.wc-how-section{padding-top:58px;padding-bottom:55px}.wc-section-heading{display:block}.wc-section-aside{font-size:12px;margin-top:20px}.wc-section-aside br{display:none}.wc-process{grid-template-columns:1fr;gap:28px;margin-top:35px}.wc-process article{display:grid;grid-template-columns:37px 1fr;column-gap:16px}.wc-step-heading{grid-row:1/4;align-items:flex-start;margin:0;position:relative}.wc-step-line{position:absolute;top:42px;width:1px;bottom:-18px;left:16px;height:auto}.wc-step-end{display:none}.wc-process h3{font-size:17px;margin-top:1px;margin-bottom:8px}.wc-process p{font-size:12px;margin-bottom:10px}.wc-technical{margin-top:30px}.wc-technical-grid{grid-template-columns:1fr 1fr;gap:20px}.wc-demo-section{padding-top:55px;padding-bottom:35px}.wc-demo-heading .wc-section-title{font-size:25px;line-height:1.65}.wc-demo-heading .wc-section-title br{display:none}.wc-demo-heading>p:last-child{font-size:12px;max-width:300px;margin-inline:auto}.wc-demo-intro{margin-top:28px}.wc-demo-shortcut{font-size:10px!important;gap:7px}.wc-real-label{font-size:9px}.wc-app{border-radius:13px}.wc-app-titlebar{padding:15px}.wc-app-titlebar .wc-preview-brand{font-size:12px}.wc-app-subtitle,.wc-app-divider{display:none}.wc-readonly{font-size:9px}.wc-app-body{grid-template-columns:1fr}.wc-app-sidebar{padding:18px 16px 12px;border-right:0;border-bottom:1px solid #eee9f4}.wc-app-sidebar>.wc-small-label{display:none}.wc-app-feature{margin:0 0 13px;font-size:12px}.wc-app-views{grid-template-columns:1fr 1fr;gap:10px}.wc-app-legend{display:none}.wc-app-main{padding:18px 14px}.wc-app-content-heading h3{font-size:17px}.wc-request{margin-bottom:20px}.wc-request summary{font-size:10px;padding:11px 12px}.wc-request p{font-size:11px}.wc-filters{gap:2px;justify-content:space-between}.wc-filter{font-size:10px!important;padding:7px 8px;gap:4px}.wc-filter .wc-dot{width:4px;height:4px}.wc-decision-toggle{padding:15px 12px;gap:9px}.wc-source-icon{width:26px;height:26px;font-size:11px}.wc-decision-copy strong{font-size:12px}.wc-decision-meta{font-size:9px;gap:9px}.wc-decision-details{padding:17px 14px}.wc-detail-body{font-size:11px;line-height:2}.wc-evidence{padding:12px}.wc-app-limitation{padding:14px 15px}.wc-app-limitation p{font-size:9px}.wc-app-limitation strong{display:block;margin-bottom:3px}.wc-app-limitation .wc-info-icon{margin-top:2px}.wc-demo-provenance{font-size:9px;margin-top:15px}.wc-closing{padding-top:46px;padding-bottom:39px;gap:15px;flex-wrap:wrap}.wc-closing p{font-size:14px}.wc-closing .wc-link{font-size:11px;margin-top:10px;margin-left:51px}.wc-case-footer{font-size:9px;padding-bottom:20px}.wc-feature-top{padding:22px 23px 0}.wc-feature-type{font-size:9px}.wc-feature-body{grid-template-columns:1fr;padding:28px 24px 0;gap:28px}.wc-feature-name{font-size:33px}.wc-feature-heading{font-size:20px}.wc-feature-copy p{font-size:12px}.wc-feature-art{padding:20px 18px 0;min-height:300px;border-radius:13px 13px 0 0}.wc-feature-art .wc-preview{transform:rotate(-1deg);transform-origin:bottom left}.wc-feature-bottom{padding:17px 23px}.wc-feature-bottom>span{display:none}.wc-feature{border-radius:17px}}
 @media(prefers-reduced-motion:reduce){.wc-page{scroll-behavior:auto}.wc-btn,.wc-chevron,.wc-summary-plus{transition:none}.wc-decision-details{animation:none}}
 @media(max-width:760px){.wc-prose{font-size:14px}.wc-detail-body{font-size:13px}.wc-decision-copy strong{font-size:13px}.wc-decision-meta{font-size:10px}.wc-filter{font-size:11px!important;min-height:40px}.wc-view-button{min-height:42px}.wc-request p,.wc-ordinary-detail{font-size:13px}}
 
+.wc-feature + .wc-feature {margin-top:24px}
 </style></head><body>
 <div class="portfolio-home" data-portfolio-view="home">
   <header class="header shell">
     <a class="identity" href="#home" aria-label="回到首页">
-      <span class="mark" aria-hidden="true">刘</span>
+      <span class="mark" aria-hidden="true">LTY</span>
       <span>刘天贇</span>
     </a>
-    <nav aria-label="主导航"><a href="#project">作品</a><a class="about-nav" href="#about">关于</a><a class="pill" href="#contact">联系我</a></nav>
+    <nav aria-label="主导航"><a class="pill" href="#contact">联系我</a></nav>
   </header>
   <main id="home">
     <section class="hero shell" aria-labelledby="intro-title">
-      <div class="eyebrow">个人主页</div>
-      <h1 id="intro-title">刘天贇</h1>
-      <p class="hero-sub">探索 AI 应用与交互体验</p>
-      <div class="portrait" aria-hidden="true"><span class="portrait-initials">LTY</span></div>
+      <h1 id="intro-title">个人主页</h1>
+      <p class="hero-sub">探索AI应用与交互体验</p>
       <div class="hero-actions"><a class="pill filled" href="#project">查看作品 <span aria-hidden="true">↓</span></a></div>
     </section>
     <section class="about-band" id="about" aria-labelledby="about-title">
@@ -374,15 +359,57 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
             <span class="about-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"/><path d="M3.5 9h17M8 13l-2 2 2 2m8-4 2 2-2 2m-5 0 2-4"/></svg></span>
             <div><span class="about-label">项目实践</span><h3 id="practice-title">AI 协作与工具设计</h3></div>
           </div>
-          <p>我也通过个人项目探索 AI 如何参与需求与实现。WhoChose 来自开发中的一个疑问：AI 完成功能时，还替我做了哪些选择？我尝试把这些选择、依据和实际影响整理成可以回看的报告，让协作过程更清楚。</p>
+          <p>我也通过个人项目探索 AI 如何参与需求与实现。我通常从实际使用中的问题出发，做出可以试用的工具，再根据反馈调整交互和结果呈现。</p>
         </article>
       </div>
     </section>
     <section class="projects shell" id="project" aria-label="项目展示">
-      <article class="wc-feature">
-        <div class="wc-feature-top"><p class="wc-kicker">01 / 个人项目</p><span class="wc-feature-type">本地工具 · AI 协作</span></div>
+      <article class="wc-feature audit-feature">
+        <div class="wc-feature-top"><p class="wc-kicker">01 / 个人项目</p></div>
         <div class="wc-feature-body">
-          <div class="wc-feature-copy"><h2 class="wc-feature-name">WhoChose</h2><div class="wc-feature-heading">AI 写出的功能里，<br>重要选择是谁做的？</div><p>将开发中的重要决定、已有依据和相关改动，整理成一份可以逐项查看的报告。</p><div class="wc-actions"><a class="wc-btn wc-btn-primary" href="#case">查看项目案例 <span aria-hidden="true">↗</span></a></div></div>
+          <div class="wc-feature-copy">
+            <h2 class="wc-feature-name">Research Code Audit</h2>
+            <div class="wc-feature-heading">科研代码审阅插件</div>
+            <p>把研究规则变成测试，找出代码里的偏差。修复后用原测试复验，再把结果和依据交给研究者。</p>
+            <div class="wc-actions"><a class="wc-btn wc-btn-primary" href="research-code-audit.html">详细了解 <span aria-hidden="true">↗</span></a></div>
+          </div>
+          <figure class="audit-flow" role="img" aria-label="对照研究计划和分析代码。绿色对勾表示检查通过，红色叉号表示存在偏差，该项进入审阅报告。">
+            <div class="audit-comparison">
+              <div class="audit-input">
+                <p class="audit-visual-heading"><span class="audit-document"></span>研究计划</p>
+                <div class="audit-checks">
+                  <div class="audit-check"><span class="audit-bar"></span></div>
+                  <div class="audit-check"><span class="audit-bar"></span></div>
+                  <div class="audit-check"><span class="audit-bar"></span></div>
+                  <div class="audit-check"><span class="audit-bar"></span></div>
+                </div>
+              </div>
+              <div class="audit-input audit-input--code">
+                <p class="audit-visual-heading"><span class="audit-code-icon">&lt;/&gt;</span>分析代码</p>
+                <div class="audit-checks">
+                  <div class="audit-check audit-check--passed"><span class="audit-bar"></span><span class="audit-mark">✓</span></div>
+                  <div class="audit-check audit-check--passed"><span class="audit-bar"></span><span class="audit-mark">✓</span></div>
+                  <div class="audit-check audit-check--passed"><span class="audit-bar"></span><span class="audit-mark">✓</span></div>
+                  <div class="audit-check audit-check--failed"><span class="audit-bar"></span><span class="audit-mark">×</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="audit-connector" aria-hidden="true"><span></span></div>
+            <figcaption class="audit-report-preview">
+              <p class="audit-visual-heading"><span class="audit-document"></span>审阅报告</p>
+              <div class="audit-report-finding">
+                <strong>需要处理</strong>
+                <span class="audit-bar"></span>
+                <span class="audit-bar"></span>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="wc-feature">
+        <div class="wc-feature-top"><p class="wc-kicker">02 / 个人项目</p></div>
+        <div class="wc-feature-body">
+          <div class="wc-feature-copy"><h2 class="wc-feature-name">WhoChose</h2><div class="wc-feature-heading">AI 写出的功能里，<br>重要选择是谁做的？</div><p>将开发中的重要决定、已有依据和相关改动，整理成一份可以逐项查看的报告。</p><div class="wc-actions"><a class="wc-btn wc-btn-primary" href="#case">详细了解 <span aria-hidden="true">↗</span></a></div></div>
           <div class="wc-feature-art" aria-label="WhoChose 真实报告内容预览"><div class="wc-preview"><div class="wc-preview-top"><span class="wc-preview-brand"><span class="wc-mini-mark">w?</span> WhoChose</span><span class="wc-live-dot">报告预览</span></div><div class="wc-preview-body"><div class="wc-preview-label">本次实现审阅</div><h2>补充记账信息</h2><div class="wc-preview-stats"><span><b>3</b> 用户指定</span><span><b>2</b> AI 自主选择</span></div><div class="wc-mini-choice"><span class="wc-source-icon wc-user">人</span><div><strong>日期默认当天，允许补录</strong><small>用户指定</small></div><span>⌄</span></div><div class="wc-mini-choice wc-mini-choice-ai"><span class="wc-source-icon wc-ai">✦</span><div><strong>类别由用户自由填写</strong><small>AI 自主选择</small></div><span>⌄</span></div></div></div></div>
         </div>
       </article>
@@ -398,8 +425,11 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
 </div>
 <div class="wc-page" id="case" data-portfolio-view="case" hidden>
   <a class="wc-skip" href="#main">跳到正文</a>
-  <header class="wc-nav wc-wrap">
-    <a class="wc-brand" href="#project" aria-label="返回个人主页的项目部分"><span class="wc-logo" aria-hidden="true">w<span>?</span></span><span>WhoChose<span class="wc-brand-caption">项目案例</span></span></a>
+  <header class="project-header wc-wrap">
+    <a class="project-brand" href="#project" aria-label="WhoChose，返回作品">
+      <span class="project-mark project-mark--whochose" aria-hidden="true">w<span>?</span></span>
+      <span>WhoChose<span class="project-caption">项目介绍</span></span>
+    </a>
   </header>
   <main id="main">
     <section class="wc-case-hero wc-wrap" aria-labelledby="case-title">
@@ -478,7 +508,7 @@ html{ scroll-behavior:smooth; scroll-padding-top:28px; }
     </section>
     <section class="wc-closing wc-wrap"><span class="wc-logo" aria-hidden="true">w<span>?</span></span><p>让重要的选择，<br><strong>留下一条可以回看的线索。</strong></p><a class="wc-link" href="#project">返回个人主页 <span aria-hidden="true">↗</span></a></section>
   </main>
-  <footer class="wc-case-footer wc-wrap"><span>WhoChose / 项目案例</span><a href="#main">回到顶部 ↑</a></footer>
+  <footer class="wc-case-footer wc-wrap"><span>WhoChose / 项目介绍</span><a href="#main">回到顶部 ↑</a></footer>
 </div>
 <noscript><style>[data-portfolio-view][hidden]{display:block!important}</style></noscript>
 <script>/* Choices come from the supplied report. AI design considerations were added retrospectively for this website. */

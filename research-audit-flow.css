@@ -1,0 +1,163 @@
+.audit-flow {
+  --audit-ink: #141c3a;
+  --audit-line: #e4e7ef;
+  --audit-sheet: #fff;
+  --audit-editor: #f6f8fb;
+  --audit-gray: #c4cbd9;
+  --audit-green: #23694f;
+  --audit-green-bar: #84c5ac;
+  --audit-red: #a64151;
+  --audit-red-bar: #d9808c;
+  --audit-red-tint: #fff3f4;
+  --audit-column-pad: clamp(10px, 1.8vw, 20px);
+  --audit-column-bottom: 13px;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(12px, 2.8vw, 29px);
+  border-radius: 18px;
+  background: linear-gradient(165deg, #f4f6fa, #fafbfc);
+  color: var(--audit-ink);
+  font: 15px/1.5 Inter, "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+.audit-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid var(--audit-line);
+  border-radius: 12px;
+  background: var(--audit-sheet);
+  box-shadow: 0 5px 16px #1524420a;
+}
+
+.audit-input { min-width: 0; padding: 14px var(--audit-column-pad) var(--audit-column-bottom); }
+.audit-input--code {
+  border-left: 1px solid var(--audit-line);
+  border-radius: 0 11px 11px 0;
+  background: var(--audit-editor);
+}
+
+.audit-flow .audit-visual-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 9px;
+  color: var(--audit-ink);
+  font-size: 15px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.audit-document {
+  display: inline-grid;
+  flex: 0 0 12px;
+  height: 14px;
+  place-items: center;
+  border: 1px solid #58647a;
+  border-radius: 2px;
+  color: #58647a;
+}
+.audit-document::after {
+  width: 5px;
+  height: 1px;
+  margin-top: -3px;
+  background: currentColor;
+  box-shadow: 0 3px currentColor;
+  content: "";
+}
+.audit-code-icon { color: #505c72; font: 650 13px/1 Consolas, monospace; letter-spacing: -.08em; }
+
+.audit-checks { display: grid; gap: 4px; }
+.audit-check {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  min-height: 29px;
+  padding: 3px 7px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+.audit-bar { width: 76%; height: 5px; border-radius: 3px; background: var(--audit-gray); }
+.audit-check:nth-child(2) .audit-bar { width: 61%; }
+.audit-check:nth-child(3) .audit-bar { width: 70%; }
+.audit-check:nth-child(4) .audit-bar { width: 65%; }
+.audit-check--passed .audit-bar { background: var(--audit-green-bar); }
+
+.audit-mark {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #e9f4ee;
+  color: var(--audit-green);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+}
+.audit-check--failed { z-index: 1; border-color: #dfadb5; background: var(--audit-red-tint); }
+.audit-check--failed .audit-bar { background: var(--audit-red-bar); }
+.audit-check--failed .audit-mark { background: #fae3e7; color: var(--audit-red); }
+.audit-check--failed::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  height: calc(var(--audit-column-bottom) + 2px);
+  border-left: 1px solid var(--audit-red);
+  content: "";
+}
+
+.audit-connector { position: relative; height: clamp(33px, 4vw, 42px); color: var(--audit-red); }
+.audit-connector::before {
+  position: absolute;
+  inset: 0 25% 50% 50%;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  border-bottom-right-radius: 5px;
+  content: "";
+}
+.audit-connector::after {
+  position: absolute;
+  inset: 50% auto 0 50%;
+  border-left: 1px solid currentColor;
+  content: "";
+}
+.audit-connector span {
+  position: absolute;
+  bottom: 1px;
+  left: calc(50% - 3px);
+  width: 7px;
+  height: 7px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.audit-report-preview {
+  width: min(100%, clamp(195px, 70%, 310px));
+  margin-inline: auto;
+  overflow: hidden;
+  border: 1px solid var(--audit-line);
+  border-radius: 10px;
+  background: var(--audit-sheet);
+  box-shadow: 0 5px 18px #1524420c;
+}
+.audit-flow .audit-report-preview .audit-visual-heading {
+  margin: 0;
+  padding: 9px 13px;
+  border-bottom: 1px solid var(--audit-line);
+}
+.audit-report-finding {
+  display: grid;
+  gap: 6px;
+  margin: 9px 11px 11px;
+  padding: 6px 9px 9px;
+  border-left: 2px solid var(--audit-red-bar);
+  border-radius: 0 4px 4px 0;
+  background: var(--audit-red-tint);
+}
+.audit-report-finding strong { font-size: 13px; font-weight: 650; }
+.audit-report-finding .audit-bar { width: 82%; height: 4px; background: #d9c9d1; }
+.audit-report-finding .audit-bar:last-child { width: 57%; }

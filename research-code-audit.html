@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Research Code Audit 是一个按研究计划核对分析代码的 Codex 插件。">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Research Code Audit｜刘天贇">
+  <meta property="og:description" content="对照研究计划审阅分析代码。">
+  <title>Research Code Audit｜刘天贇</title>
+  <link rel="stylesheet" href="research-audit.css">
+  <link rel="stylesheet" href="project-header.css">
+  <link rel="stylesheet" href="research-audit-flow.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="project-header wrap">
+    <a class="project-brand" href="index.html#project" aria-label="Research Code Audit，返回作品">
+      <span class="project-mark" aria-hidden="true">R</span>
+      <span>Research Code Audit<span class="project-caption">项目介绍</span></span>
+    </a>
+  </header>
+
+  <main class="wrap" id="main">
+    <header class="intro">
+      <div class="intro-copy">
+        <h1>Research <br class="title-break">Code Audit</h1>
+        <p class="lead">对照研究计划审阅分析代码</p>
+        <p class="summary">这是一个帮助研究者审阅分析代码的 Codex 插件。你可以提供已有的分析计划和脚本，也可以先和插件一起确认分析规则。插件会把影响结果的关键规则变成测试，也能对照参考文献核查方法在代码里是否正确实现。按优先级形成审阅报告，方便您的检查。</p>
+        <a class="action" href="#workflow">看审阅演示 <span aria-hidden="true">↓</span></a>
+      </div>
+
+      <figure class="audit-flow" role="img" aria-label="对照研究计划和分析代码。绿色对勾表示检查通过，红色叉号表示存在偏差，该项进入审阅报告。">
+        <div class="audit-comparison">
+          <div class="audit-input">
+            <p class="audit-visual-heading"><span class="audit-document"></span>研究计划</p>
+            <div class="audit-checks">
+              <div class="audit-check"><span class="audit-bar"></span></div>
+              <div class="audit-check"><span class="audit-bar"></span></div>
+              <div class="audit-check"><span class="audit-bar"></span></div>
+              <div class="audit-check"><span class="audit-bar"></span></div>
+            </div>
+          </div>
+          <div class="audit-input audit-input--code">
+            <p class="audit-visual-heading"><span class="audit-code-icon">&lt;/&gt;</span>分析代码</p>
+            <div class="audit-checks">
+              <div class="audit-check audit-check--passed"><span class="audit-bar"></span><span class="audit-mark">✓</span></div>
+              <div class="audit-check audit-check--passed"><span class="audit-bar"></span><span class="audit-mark">✓</span></div>
+              <div class="audit-check audit-check--passed"><span class="audit-bar"></span><span class="audit-mark">✓</span></div>
+              <div class="audit-check audit-check--failed"><span class="audit-bar"></span><span class="audit-mark">×</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="audit-connector" aria-hidden="true"><span></span></div>
+        <figcaption class="audit-report-preview">
+          <p class="audit-visual-heading"><span class="audit-document"></span>审阅报告</p>
+          <div class="audit-report-finding">
+            <strong>需要处理</strong>
+            <span class="audit-bar"></span>
+            <span class="audit-bar"></span>
+          </div>
+        </figcaption>
+      </figure>
+    </header>
+
+    <section class="motivation" id="motivation" aria-labelledby="why-title">
+      <header class="section-heading">
+        <h2 id="why-title">为什么做这个插件</h2>
+      </header>
+      <div class="motivation-reading">
+        <div class="motivation-stages">
+          <div class="motivation-stage">
+            <h3>结果跑出来了，还是不知道先测哪里</h3>
+            <p>我问过几位用 AI 写科研代码的同学，拿到结果以后会怎么查。聊下来，几个人都提到一件事：代码跑通了，心里还是没底。有位同学做心理学实验，实验程序和分析脚本都会请 AI 帮忙写。她说，有时结果看着挺正常，真要自己检查，又不知道先测哪一段。</p>
+          </div>
+          <div class="motivation-stage">
+            <h3>一条规则，要翻几处代码</h3>
+            <p>就算知道要查哪条规则，代码一多，也容易查不过来。比如计划里就一句「按条件算正确率」，翻到代码里，得先看哪些试次留下来了，再看超时怎么处理，最后还要找到分母是怎么算的。请 AI 总结能少读一点代码，可看完还是会想，它具体查过哪里？</p>
+            <figure class="rule-map" aria-labelledby="rule-map-title">
+              <figcaption id="rule-map-title">
+                <span>分析计划</span>
+                <strong>按条件算正确率</strong>
+              </figcaption>
+              <ol class="rule-traces">
+                <li><span>纳入哪些试次</span><code>formal = r["phase"] == "formal"</code></li>
+                <li><span>哪些作答计为正确</span><code>r["outcome"] == "correct"</code></li>
+                <li><span>分母怎么算</span><code>denominator = len(group)</code></li>
+              </ol>
+            </figure>
+          </div>
+          <div class="motivation-stage">
+            <h3>把「该测什么」也做进插件</h3>
+            <p>像上面这样的规则一多，研究者就得在计划和脚本之间来回找。我想把这段工作交给插件，让它从分析计划里找出会影响结果的规则，再定位对应的代码。</p>
+            <p>一条规则即使写偏了，脚本也可能正常跑完，算出的结果看着也合理。所以我把测试也做进了插件。能验证的规则，就用一份能区分不同写法的输入来测。研究者在报告里可以看到检查依据，也能沿着它找到对应的代码。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow" id="workflow" aria-labelledby="workflow-title">
+      <header class="section-heading">
+        <h2 id="workflow-title">从研究规则到验证结果</h2>
+      </header>
+
+      <section class="step" id="rules" aria-labelledby="rules-title">
+        <div class="step-copy">
+          <h3 id="rules-title">确认分析规则</h3>
+          <p>插件先读现有的分析计划。碰到会改变结果、计划又没写清的处理方式，它会在 Codex 里请研究者确认。需要参考文献或既有实现时，也可以在这里说明。</p>
+        </div>
+        <figure class="workflow-capture workflow-question">
+          <a class="capture-link" href="assets/confirm-reference.png" aria-label="查看完整 Codex 提问界面">
+            <img src="assets/confirm-reference.png" width="933" height="295" loading="lazy"
+                 alt="Codex 原生提问界面，询问是否有需要遵循的参考文献或参考实现。">
+          </a>
+        </figure>
+      </section>
+
+      <section class="step" id="test" aria-labelledby="test-title">
+        <div class="step-copy">
+          <h3 id="test-title">用实际脚本验证</h3>
+          <p>规则确定后，插件设计能区分正确实现和常见错误的测试输入。先独立确定预期，再用同一份输入运行实际脚本，比对两边的结果。</p>
+        </div>
+        <figure class="validation-diagram" role="img" aria-label="对同一份测试输入，先按研究规则独立确定预期，再运行实际脚本获取输出，最后比对预期和输出。">
+          <div class="validation-input">同一份测试输入</div>
+          <div class="validation-branches">
+            <div><strong>按研究规则计算</strong><span>独立确定的预期</span></div>
+            <div><strong>运行实际脚本</strong><span>脚本输出</span></div>
+          </div>
+          <figcaption class="validation-result">比对预期与输出</figcaption>
+        </figure>
+      </section>
+
+      <section class="step" id="report" aria-labelledby="report-title">
+        <div class="step-copy">
+          <h3 id="report-title">在报告里查看结果和依据</h3>
+          <p>报告会说明本次检查的范围，并把需要处理的事项放在前面。展开检查条目，可以看到核对的是哪条规则、怎么验证的，以及对应的代码位置。</p>
+          <p id="repair">经授权修复后，插件沿用原来的输入和预期复验，并把结果记在报告里。</p>
+        </div>
+        <div class="workflow-report">
+          <figure class="workflow-capture">
+            <a class="capture-link" href="assets/audit-report.webp" aria-label="查看完整审阅报告截图">
+              <img src="assets/audit-report.webp" width="1600" height="1254" loading="lazy"
+                   alt="示例审阅报告。可查看本次范围、需要处理的事项、重点检查和辅助检查。">
+            </a>
+          </figure>
+          <details class="evidence" id="evidence">
+            <summary>展开检查依据示例</summary>
+            <div class="evidence-body">
+              <a class="capture-link" href="assets/audit-repair.webp" aria-label="查看完整复验依据截图">
+                <img src="assets/audit-repair.webp" width="1600" height="822" loading="lazy"
+                     alt="展开的报告条目，展示核对规则、验证思路和代码位置。">
+              </a>
+            </div>
+          </details>
+        </div>
+      </section>
+    </section>
+
+    <section class="iteration" aria-labelledby="iteration-title">
+      <header class="section-heading">
+        <h2 id="iteration-title">试用后的报告改版</h2>
+      </header>
+      <div class="prose">
+          <p>第一次试用时，对方觉得报告比直接读代码清楚。可检查项一多，他还是得自己判断先看哪里。旧版的「其他实现」把直接影响结果的规则和例行核对放在一起，两类检查看起来一样重要。</p>
+          <p>我根据这次反馈改了 AI 判断优先级的方式。同一项检查在不同研究里，重要程度可能不同。现在 AI 会结合本次研究的问题和分析计划，判断某条规则写错了会不会影响主要结果。</p>
+          <p>报告先列需要处理的事项，再把影响关键结果的条目放进「重点检查」。辅助检查保留在报告里，需要时再展开。</p>
+      </div>
+
+      <figure class="report-comparison" aria-labelledby="comparison-title">
+        <figcaption id="comparison-title">按对研究结果的影响排列检查项</figcaption>
+        <div class="comparison-grid">
+          <div class="comparison-panel">
+            <div class="frame-heading"><strong>改版前</strong></div>
+            <div class="comparison-content">
+              <div class="comparison-stable">需要处理</div>
+              <div class="report-group comparison-source">
+                <strong>其他实现</strong>
+                <span class="comparison-item comparison-item--key">正确率分母怎么计算</span>
+                <span class="comparison-item">输出文件怎么记录</span>
+              </div>
+            </div>
+          </div>
+          <div class="comparison-panel revised">
+            <div class="frame-heading"><strong>改版后</strong></div>
+            <div class="comparison-content">
+              <div class="comparison-stable">需要处理</div>
+              <div class="comparison-targets">
+                <div class="report-group primary-group">
+                  <strong>重点检查</strong>
+                  <span class="comparison-item comparison-item--key">正确率分母怎么计算</span>
+                </div>
+                <div class="report-group">
+                  <strong>辅助检查</strong>
+                  <span class="comparison-item">输出文件怎么记录</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </figure>
+
+    </section>
+  </main>
+  <footer class="footer wrap"><a class="text-link" href="index.html#project">← 返回作品</a></footer>
+</body>
+</html>
