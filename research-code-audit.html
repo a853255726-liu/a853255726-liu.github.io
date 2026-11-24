@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Research Code Audit 是一个按研究计划核对分析代码的 Codex 插件。">
+  <meta name="description" content="Research Code Audit：对照研究计划独立验证科研代码，让审阅结论有依据、可复验。">
   <meta name="theme-color" content="#ffffff">
   <meta property="og:title" content="Research Code Audit｜刘天贇">
-  <meta property="og:description" content="对照研究计划审阅分析代码。">
+  <meta property="og:description" content="对照研究计划核查代码，用独立测试和可追溯证据验证关键规则。">
   <title>Research Code Audit｜刘天贇</title>
   <link rel="stylesheet" href="research-audit.css">
   <link rel="stylesheet" href="project-header.css">
@@ -25,8 +25,8 @@
     <header class="intro">
       <div class="intro-copy">
         <h1>Research <br class="title-break">Code Audit</h1>
-        <p class="lead">对照研究计划审阅分析代码</p>
-        <p class="summary">这是一个帮助研究者审阅分析代码的 Codex 插件。你可以提供已有的分析计划和脚本，也可以先和插件一起确认分析规则。插件会把影响结果的关键规则变成测试，也能对照参考文献核查方法在代码里是否正确实现。按优先级形成审阅报告，方便您的检查。</p>
+        <p class="lead">让科研代码审阅有依据、可复验</p>
+        <p class="summary">Research Code Audit 是一个面向科研人员的 Codex 插件，用于核查实验和数据分析代码是否符合已确认的研究计划。它将影响研究结果的关键规则转化为可执行测试：先独立确定预期，再运行实际脚本比对结果。报告按优先级呈现问题，并保留验证依据和代码位置，帮助研究者判断先查什么、为什么。</p>
         <a class="action" href="#workflow">看审阅演示 <span aria-hidden="true">↓</span></a>
       </div>
 
@@ -71,7 +71,7 @@
         <div class="motivation-stages">
           <div class="motivation-stage">
             <h3>结果跑出来了，还是不知道先测哪里</h3>
-            <p>我问过几位用 AI 写科研代码的同学，拿到结果以后会怎么查。聊下来，几个人都提到一件事：代码跑通了，心里还是没底。有位同学做心理学实验，实验程序和分析脚本都会请 AI 帮忙写。她说，有时结果看着挺正常，真要自己检查，又不知道先测哪一段。</p>
+            <p>我问过几位用 AI 写科研代码的同学，想知道他们拿到结果后会怎样检查。几个人都提到：代码跑通了，心里还是没底。有位做心理学实验的同学说，实验程序和分析脚本都会请 AI 帮忙写，但有时结果看着正常，真要自己检查，却不知道先测哪一段。</p>
           </div>
           <div class="motivation-stage">
             <h3>一条规则，要翻几处代码</h3>
@@ -89,9 +89,9 @@
             </figure>
           </div>
           <div class="motivation-stage">
-            <h3>把「该测什么」也做进插件</h3>
-            <p>像上面这样的规则一多，研究者就得在计划和脚本之间来回找。我想把这段工作交给插件，让它从分析计划里找出会影响结果的规则，再定位对应的代码。</p>
-            <p>一条规则即使写偏了，脚本也可能正常跑完，算出的结果看着也合理。所以我把测试也做进了插件。能验证的规则，就用一份能区分不同写法的输入来测。研究者在报告里可以看到检查依据，也能沿着它找到对应的代码。</p>
+            <h3>从代码审阅到可验证的检查</h3>
+            <p>让 AI 对照分析计划阅读代码，可以帮助定位疑点，但结论仍然主要依赖 AI 对代码的理解。研究者看完审阅意见，可能还会追问：它真的验证过这条规则吗？</p>
+            <p>例如，计划要求将超时试次计入正确率分母，代码却将其排除。两种写法都可能正常运行，结果也可能看起来合理。因此，我把独立验证加入流程：为已确认的规则设计能够区分不同写法的测试输入，先独立确定预期，再运行实际脚本。报告不仅给出判断，也能提供测试依据和对应的代码位置。</p>
           </div>
         </div>
       </div>
@@ -104,8 +104,8 @@
 
       <section class="step" id="rules" aria-labelledby="rules-title">
         <div class="step-copy">
-          <h3 id="rules-title">确认分析规则</h3>
-          <p>插件先读现有的分析计划。碰到会改变结果、计划又没写清的处理方式，它会在 Codex 里请研究者确认。需要参考文献或既有实现时，也可以在这里说明。</p>
+          <h3 id="rules-title">确认检查标准</h3>
+          <p>插件先读现有分析计划。遇到可能改变结果、但计划尚未写清的处理方式，会请研究者确认，避免 AI 自行补定研究口径。需要时也可以指定参考文献或既有实现。</p>
         </div>
         <figure class="workflow-capture workflow-question">
           <a class="capture-link" href="assets/confirm-reference.png" aria-label="查看完整 Codex 提问界面">
@@ -117,8 +117,8 @@
 
       <section class="step" id="test" aria-labelledby="test-title">
         <div class="step-copy">
-          <h3 id="test-title">用实际脚本验证</h3>
-          <p>规则确定后，插件设计能区分正确实现和常见错误的测试输入。先独立确定预期，再用同一份输入运行实际脚本，比对两边的结果。</p>
+          <h3 id="test-title">执行独立验证</h3>
+          <p>针对可验证的规则，插件设计能区分正确实现和常见错误的测试输入，独立确定预期结果，再运行实际脚本进行比对。无法自动核实的内容则标记为待验证。</p>
         </div>
         <figure class="validation-diagram" role="img" aria-label="对同一份测试输入，先按研究规则独立确定预期，再运行实际脚本获取输出，最后比对预期和输出。">
           <div class="validation-input">同一份测试输入</div>
@@ -132,9 +132,9 @@
 
       <section class="step" id="report" aria-labelledby="report-title">
         <div class="step-copy">
-          <h3 id="report-title">在报告里查看结果和依据</h3>
-          <p>报告会说明本次检查的范围，并把需要处理的事项放在前面。展开检查条目，可以看到核对的是哪条规则、怎么验证的，以及对应的代码位置。</p>
-          <p id="repair">经授权修复后，插件沿用原来的输入和预期复验，并把结果记在报告里。</p>
+          <h3 id="report-title">查看证据与修复复验</h3>
+          <p>报告说明本次检查范围，并优先列出待处理事项。展开条目，可以查看核对的研究规则、验证方式和对应的代码位置。</p>
+          <p id="repair">经研究者授权修复后，插件沿用原有输入和预期复验，并将结果记录在报告中。</p>
         </div>
         <div class="workflow-report">
           <figure class="workflow-capture">
@@ -156,14 +156,35 @@
       </section>
     </section>
 
+    <section class="decisions" aria-labelledby="decisions-title">
+      <header class="section-heading">
+        <h2 id="decisions-title">设计过程中的关键取舍</h2>
+      </header>
+      <div class="decision-list">
+        <div class="decision-item">
+          <h3>先确认规则，再执行检查</h3>
+          <p>如果计划没写清超时试次等处理口径，AI 不应替研究者作决定。先确认检查标准，才有明确的审阅依据。</p>
+        </div>
+        <div class="decision-item">
+          <h3>用实际运行核对，而不只生成审阅意见</h3>
+          <p>阅读代码可以发现疑点，但不能替代验证。将独立预期与实际输出对照，让检查结论能够被复查。</p>
+        </div>
+        <div class="decision-item">
+          <h3>按研究影响排序，而非固定优先级</h3>
+          <p>不同研究关注的核心指标不同。检查项的优先级需要结合当前研究问题和分析计划判断。</p>
+        </div>
+      </div>
+    </section>
+
     <section class="iteration" aria-labelledby="iteration-title">
       <header class="section-heading">
-        <h2 id="iteration-title">试用后的报告改版</h2>
+        <h2 id="iteration-title">一次试用反馈如何改变报告设计</h2>
       </header>
       <div class="prose">
-          <p>第一次试用时，对方觉得报告比直接读代码清楚。可检查项一多，他还是得自己判断先看哪里。旧版的「其他实现」把直接影响结果的规则和例行核对放在一起，两类检查看起来一样重要。</p>
-          <p>我根据这次反馈改了 AI 判断优先级的方式。同一项检查在不同研究里，重要程度可能不同。现在 AI 会结合本次研究的问题和分析计划，判断某条规则写错了会不会影响主要结果。</p>
-          <p>报告先列需要处理的事项，再把影响关键结果的条目放进「重点检查」。辅助检查保留在报告里，需要时再展开。</p>
+          <p><strong>问题：</strong>第一次请同学试用时，对方觉得报告比直接读代码清楚，但检查项一多，仍然要自己判断先看哪里。旧版把影响主要结果的规则和例行核对都放在「其他实现」，两类内容显得一样重要。</p>
+          <p><strong>分析：</strong>问题不只是信息多，而是报告没有体现检查项对研究结果的不同影响。同一条规则在不同研究里，重要程度也可能不同。</p>
+          <p><strong>调整：</strong>我让 AI 结合当前研究问题和分析计划判断检查项的重要性，并重新组织报告：先列「需要处理」，再展示影响关键结果的「重点检查」，辅助检查保留供按需展开。</p>
+          <p>这次改版希望让研究者不仅看见“检查到了什么”，也更容易决定“先处理什么”。</p>
       </div>
 
       <figure class="report-comparison" aria-labelledby="comparison-title">
