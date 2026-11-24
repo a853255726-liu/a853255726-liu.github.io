@@ -49,6 +49,7 @@ img { display: block; width: 100%; height: auto; }
 }
 .lead { margin-top: 24px; font-size: clamp(1.18rem, 2.4vw, 1.75rem); font-weight: 650; line-height: 1.4; }
 .summary { max-width: 34em; margin-top: 14px; color: var(--muted); }
+.summary strong, .motivation-stage p strong, .prose p strong { color: var(--ink); font-weight: 650; }
 .action {
   display: inline-flex;
   align-items: center;
