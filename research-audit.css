@@ -50,12 +50,18 @@ img { display: block; width: 100%; height: auto; }
 .lead { margin-top: 24px; font-size: clamp(1.18rem, 2.4vw, 1.75rem); font-weight: 650; line-height: 1.4; }
 .summary { max-width: 34em; margin-top: 14px; color: var(--muted); }
 .summary strong, .motivation-stage p strong, .prose p strong { color: var(--ink); font-weight: 650; }
+.intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: 26px;
+}
 .action {
   display: inline-flex;
   align-items: center;
   gap: 16px;
   min-height: 48px;
-  margin-top: 26px;
   padding: 10px 20px;
   border-radius: 999px;
   background: var(--purple);
@@ -67,6 +73,20 @@ img { display: block; width: 100%; height: auto; }
 }
 .action:hover { background: #5903cb; transform: translateY(-2px); }
 .action:active { transform: translateY(1px); }
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.source-link:hover {
+  color: var(--purple);
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
 
 .motivation, .workflow, .decisions, .iteration { border-top: 1px solid var(--line); }
 .section-heading { margin-bottom: clamp(24px, 3.5vw, 40px); }
